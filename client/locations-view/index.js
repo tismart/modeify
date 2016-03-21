@@ -315,6 +315,7 @@ View.prototype.suggest = function(e) {
       log.error('%e', err);
     } else {
         if (suggestions && suggestions.length > 0) {
+            var xxxdata = {};
             for (var i = 0; i < suggestions.length; i++) {
 
                 item_suggestions = suggestions[i].properties;
@@ -331,12 +332,15 @@ View.prototype.suggest = function(e) {
                         "lon" : item_geometry.coordinates[0],
                         "magicKey": ""
                     };
-                    suggestionsData.push(suggestion_obj);
+                    if (xxxdata[item_suggestions.label] === undefined) {
+                        suggestionsData.push(suggestion_obj);
+                    }
+
                 }
 
             }
 
-            suggestionsData = suggestionsData.slice(0, 8);
+            suggestionsData = suggestionsData.slice(0, 5);
             suggestionList.innerHTML = suggestionsTemplate.render({
                 suggestions: suggestionsData
             });
