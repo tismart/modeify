@@ -333,6 +333,7 @@ View.prototype.suggest = function(e) {
                         "magicKey": ""
                     };
                     if (xxxdata[item_suggestions.label] === undefined) {
+                        xxxdata[item_suggestions.label] = true;
                         suggestionsData.push(suggestion_obj);
                     }
 
