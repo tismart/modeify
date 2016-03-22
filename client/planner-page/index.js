@@ -273,6 +273,7 @@ View.prototype.showSidePanel = function (e) {
     plan = session.plan();
 //    plan.updateRoutes();
     transitive.updateData(plan.journey());
+    console.log("imprime plan data -> ", plan.journey());
   }, 2100)
 };
 
@@ -329,7 +330,11 @@ function updateMapOnPlanChange(plan, map, transitive, transitiveLayer) {
     if (journey && !isMobile) {
       try {
         log('updating data');
+
+        console.log("imprime journey -> ", journey);
+
         transitive.updateData(journey);
+
         map.fitBounds(transitiveLayer.getBounds());
       } catch (e) {
 	map.setView([center[1], center[0]], config.geocode().zoom);
