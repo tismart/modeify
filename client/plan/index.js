@@ -1,17 +1,17 @@
 var Batch = require('batch');
 var debounce = require('debounce');
 var geocode = require('geocode');
-var Journey = require('journey');
+//var Journey = require('journey');
 
 var log = require('./client/log')('plan');
 var defaults = require('model-defaults');
 var model = require('model');
 var ProfileQuery = require('profile-query');
-var ProfileScorer = require('otp-profile-score');
+//var ProfileScorer = require('otp-profile-score');
 var qs = require('querystring');
 
 var loadPlan = require('./load');
-var store = require('./store');
+//var store = require('./store');
 var updateRoutes = require('./update-routes');
 
 module.exports.dataplan = [];
@@ -40,7 +40,7 @@ var Plan = module.exports = model('Plan')
     options: [],
     dataplan: [],
     query: new ProfileQuery(),
-    scorer: new ProfileScorer(),
+    //scorer: new ProfileScorer(),
     start_time: (new Date()).getHours() - 1,
     to: '',
     to_valid: false,
@@ -59,7 +59,7 @@ var Plan = module.exports = model('Plan')
   .attr('from_ll')
   .attr('from_valid')
   .attr('loading')
-  .attr('journey')
+  //.attr('journey')
   .attr('options')
   .attr('query')
   .attr('scorer')
@@ -332,22 +332,22 @@ Plan.prototype.generateQuery = function() {
  */
 
 Plan.prototype.store = debounce(function() {
-  store(this);
+ store(this);
 }, DEBOUNCE_UPDATES);
-
-/**
- * Clear localStorage
- */
-
-Plan.prototype.clearStore = store.clear;
+//
+///**
+// * Clear localStorage
+// */
+//
+//Plan.prototype.clearStore = store.clear;
 
 /**
  * Save URL
  */
 
-Plan.prototype.saveURL = function() {
-  window.history.replaceState(null, '', '/planner?' + this.generateQueryString());
-};
+//Plan.prototype.saveURL = function() {
+//  window.history.replaceState(null, '', '/planner?' + this.generateQueryString());
+//};
 
 /**
  * Get next date for day of the week
