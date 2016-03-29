@@ -84,12 +84,12 @@ module.exports.load = function(ctx, next) {
  * Sync plans with localStorage
  */
 
-//Plan.on('change', function(plan, name, val) {
-//  log('plan.%s changed to %s', name, val);
-//
-//  // Store in localStorage & track the change
-//  if (name !== 'options' && name !== 'journey' && name !== 'loading') plan.store();
-//});
+Plan.on('change', function(plan, name, val) {
+  log('plan.%s changed to %s', name, val);
+
+  // Store in localStorage & track the change
+  if (name !== 'options' && name !== 'journey' && name !== 'loading') plan.store();
+});
 
 /**
  * Keep start/end times in sync
@@ -218,16 +218,16 @@ Plan.prototype.setAddresses = function(from, to, callback) {
  * Rescore Options
  */
 
-//Plan.prototype.rescoreOptions = function() {
-//  var scorer = this.scorer();
-//  var options = this.options();
-//
-//  options.forEach(function(o) {
-//    o.rescore(scorer);
-//  });
-//
-//  this.store();
-//};
+Plan.prototype.rescoreOptions = function() {
+  var scorer = this.scorer();
+  var options = this.options();
+
+  options.forEach(function(o) {
+    o.rescore(scorer);
+  });
+
+  this.store();
+};
 
 /**
  * To Lower Case
@@ -331,9 +331,9 @@ Plan.prototype.generateQuery = function() {
  * Store in localStorage. Restrict this I/O to once every 25ms.
  */
 
-//Plan.prototype.store = debounce(function() {
-//  store(this);
-//}, DEBOUNCE_UPDATES);
+Plan.prototype.store = debounce(function() {
+ store(this);
+}, DEBOUNCE_UPDATES);
 //
 ///**
 // * Clear localStorage
