@@ -343,14 +343,14 @@ function showQuery(query) {
 function updateMapOnPlanChange(plan, map) {
   // Register plan update events
 
-  plan.on('change journey', function(journey) {
+  //plan.on('change journey', function(journey) {
 
-    if (journey && !isMobile) {
+    //if (journey && !isMobile) {
       try {
 
         log('updating data');
 
-        var datajourney = journey;
+        //var datajourney = journey;
         if (!(plan.dataplan === undefined)) {
             var itineraries = plan.dataplan;
             for (i = 0; i < itineraries.length; i++) {
@@ -369,6 +369,6 @@ function updateMapOnPlanChange(plan, map) {
 	    map.setView([center[1], center[0]], config.geocode().zoom);
       }
 
-    }
-  });
+    //}
+  //});
 }
