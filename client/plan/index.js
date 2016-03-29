@@ -1,17 +1,17 @@
 var Batch = require('batch');
 var debounce = require('debounce');
 var geocode = require('geocode');
-var Journey = require('journey');
+//var Journey = require('journey');
 
 var log = require('./client/log')('plan');
 var defaults = require('model-defaults');
 var model = require('model');
 var ProfileQuery = require('profile-query');
-var ProfileScorer = require('otp-profile-score');
+//var ProfileScorer = require('otp-profile-score');
 var qs = require('querystring');
 
 var loadPlan = require('./load');
-var store = require('./store');
+//var store = require('./store');
 var updateRoutes = require('./update-routes');
 
 module.exports.dataplan = [];
@@ -40,7 +40,7 @@ var Plan = module.exports = model('Plan')
     options: [],
     dataplan: [],
     query: new ProfileQuery(),
-    scorer: new ProfileScorer(),
+    //scorer: new ProfileScorer(),
     start_time: (new Date()).getHours() - 1,
     to: '',
     to_valid: false,
@@ -59,7 +59,7 @@ var Plan = module.exports = model('Plan')
   .attr('from_ll')
   .attr('from_valid')
   .attr('loading')
-  .attr('journey')
+  //.attr('journey')
   .attr('options')
   .attr('query')
   .attr('scorer')
@@ -84,12 +84,12 @@ module.exports.load = function(ctx, next) {
  * Sync plans with localStorage
  */
 
-Plan.on('change', function(plan, name, val) {
-  log('plan.%s changed to %s', name, val);
-
-  // Store in localStorage & track the change
-  if (name !== 'options' && name !== 'journey' && name !== 'loading') plan.store();
-});
+//Plan.on('change', function(plan, name, val) {
+//  log('plan.%s changed to %s', name, val);
+//
+//  // Store in localStorage & track the change
+//  if (name !== 'options' && name !== 'journey' && name !== 'loading') plan.store();
+//});
 
 /**
  * Keep start/end times in sync
@@ -218,16 +218,16 @@ Plan.prototype.setAddresses = function(from, to, callback) {
  * Rescore Options
  */
 
-Plan.prototype.rescoreOptions = function() {
-  var scorer = this.scorer();
-  var options = this.options();
-
-  options.forEach(function(o) {
-    o.rescore(scorer);
-  });
-
-  this.store();
-};
+//Plan.prototype.rescoreOptions = function() {
+//  var scorer = this.scorer();
+//  var options = this.options();
+//
+//  options.forEach(function(o) {
+//    o.rescore(scorer);
+//  });
+//
+//  this.store();
+//};
 
 /**
  * To Lower Case
@@ -331,23 +331,23 @@ Plan.prototype.generateQuery = function() {
  * Store in localStorage. Restrict this I/O to once every 25ms.
  */
 
-Plan.prototype.store = debounce(function() {
-  store(this);
-}, DEBOUNCE_UPDATES);
-
-/**
- * Clear localStorage
- */
-
-Plan.prototype.clearStore = store.clear;
+//Plan.prototype.store = debounce(function() {
+//  store(this);
+//}, DEBOUNCE_UPDATES);
+//
+///**
+// * Clear localStorage
+// */
+//
+//Plan.prototype.clearStore = store.clear;
 
 /**
  * Save URL
  */
 
-Plan.prototype.saveURL = function() {
-  window.history.replaceState(null, '', '/planner?' + this.generateQueryString());
-};
+//Plan.prototype.saveURL = function() {
+//  window.history.replaceState(null, '', '/planner?' + this.generateQueryString());
+//};
 
 /**
  * Get next date for day of the week
