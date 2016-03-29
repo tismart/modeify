@@ -24,7 +24,7 @@ function Display(transitive) {
   this.transitive = transitive;
   var el = this.el = transitive.el;
   //this.width = el.clientWidth;
-  this.height = el.clientHeight;
+  //this.height = el.clientHeight;
 
   // Set up the pan/zoom behavior
   var zoom = this.zoom = d3.behavior.zoom()
