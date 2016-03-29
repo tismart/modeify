@@ -86,7 +86,7 @@ module.exports.drawRouteAmigo = function(route, mode) {
 
         if (mode=="CAR") {
             color = '#FF0000';
-            dasharray: '6';
+            dasharray= '6';
             weight = 3;
 
         }else if(mode=="BIKE") {
