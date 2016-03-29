@@ -61,17 +61,9 @@ module.exports = function(el) {
     module.exports.activeMap = map;
 
     map.realtimeControl = L.control.toggleRealTime().addTo(map);
-
     realtime = mapModule.realtime();
     console.log("entre amigo", map)
 
-  } else {
-    console.log("entre mapaboxs");
-    map = L.mapbox.map(el, config.mapbox_map_id(), {
-      attributionControl: false,
-      inertia: false,
-      zoomAnimation: false
-    }).setView([center[1], center[0]], config.geocode().zoom);
   }
 
   return map;

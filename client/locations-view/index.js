@@ -364,16 +364,14 @@ function setCursor(node, pos) {
   node = (typeof node === "string" || node instanceof String) ? document.getElementById(node) : node;
 
   if (!node) return;
-
-  if (node.createTextRange) {
-    var textRange = node.createTextRange();
-    textRange.collapse(true);
-    textRange.moveEnd(pos);
-    textRange.moveStart(pos);
-    textRange.select();
-  } else if (node.setSelectionRange) {
-    node.setSelectionRange(pos, pos);
-  }
-
+      if (node.createTextRange) {
+        var textRange = node.createTextRange();
+        textRange.collapse(true);
+        textRange.moveEnd(pos);
+        textRange.moveStart(pos);
+        textRange.select();
+      } else if (node.setSelectionRange) {
+        node.setSelectionRange(pos, pos);
+      }
   return false;
 }

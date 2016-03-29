@@ -2,7 +2,10 @@ var config = require('config');
 var FeedbackModal = require('feedback-modal');
 var FilterView = require('filter-view');
 var HelpMeChoose = require('help-me-choose-view');
-var LeafletTransitiveLayer = require('Leaflet.TransitiveLayer');
+
+//var LeafletTransitiveLayer = require('Leaflet.TransitiveLayer');
+//var transitive = require('transitive');
+
 var LocationsView = require('locations-view');
 var log = require('./client/log')('planner-page');
 var showMapView = require('map-view');
@@ -13,7 +16,7 @@ var scrollbarSize = require('scrollbar-size');
 var scrolling = require('scrolling');
 var session = require('session');
 var textModal = require('text-modal');
-var transitive = require('transitive');
+
 var ua = require('user-agent');
 var view = require('view');
 var showWelcomeWizard = require('welcome-flow');
@@ -23,6 +26,8 @@ var geocode = require('geocode');
 
 var FROM = config.geocode().start_address;
 var TO = config.geocode().end_address;
+
+
 var isMobile = window.innerWidth <= 480;
 var center = config.geocode().center.split(',').map(parseFloat);
 
@@ -73,13 +78,13 @@ module.exports = function(ctx, next) {
     console.log("map ->", map);
 
     // Create the transitive layer
-    var transitiveLayer = new LeafletTransitiveLayer(transitive);
+    //var transitiveLayer = new LeafletTransitiveLayer(transitive);
 
     // Set the transitive layer
     //map.addLayer(transitiveLayer);
 
     // Update map on plan change
-    updateMapOnPlanChange(plan, map, transitive, transitiveLayer);
+    updateMapOnPlanChange(plan, map);
 
     //map.on('click', function (e) {
     //      var from = plan.from_ll();

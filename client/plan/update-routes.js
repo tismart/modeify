@@ -35,7 +35,7 @@ function updateRoutes(plan, opts, callback) {
     });
 
     plan.loading(false);
-    plan.saveURL();
+    //plan.saveURL();
 
     if (callback) callback.call(null, err, res);
   };
