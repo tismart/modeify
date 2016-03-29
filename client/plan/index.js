@@ -88,7 +88,7 @@ Plan.on('change', function(plan, name, val) {
   log('plan.%s changed to %s', name, val);
 
   // Store in localStorage & track the change
-  //if (name !== 'options' && name !== 'journey' && name !== 'loading') plan.store();
+  if (name !== 'options' && name !== 'journey' && name !== 'loading') plan.store();
 });
 
 /**
