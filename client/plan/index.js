@@ -339,7 +339,7 @@ Plan.prototype.store = debounce(function() {
 // * Clear localStorage
 // */
 //
-Plan.prototype.clearStore = store.clear;
+//Plan.prototype.clearStore = store.clear;
 
 /**
  * Save URL
