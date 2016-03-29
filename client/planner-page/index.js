@@ -285,7 +285,7 @@ View.prototype.showSidePanel = function (e) {
 
     plan = session.plan();
     plan.updateRoutes();
-    transitive.updateData(plan.journey());
+    //transitive.updateData(plan.journey());
   }, 2100)
 };
 
@@ -340,7 +340,7 @@ function showQuery(query) {
  * Update Map on plan change
  */
 
-function updateMapOnPlanChange(plan, map, transitive, transitiveLayer) {
+function updateMapOnPlanChange(plan, map) {
   // Register plan update events
 
   plan.on('change journey', function(journey) {

@@ -1,6 +1,6 @@
 var convert = require('convert');
 var hogan = require('hogan.js');
-var transitive = require('transitive');
+//var transitive = require('transitive');
 
 var template = hogan.compile(require('./template.html'));
 
@@ -54,13 +54,13 @@ module.exports = function(route, opts) {
     accessModeIcon = convert.modeToIcon('carshare');
   }
 
-  segments.push({
-    mode: accessModeIcon,
-    style: getModeStyles(accessMode),
-    inline: !!opts.inline,
-    small: !!opts.small,
-    svg: true
-  });
+  //segments.push({
+  //  mode: accessModeIcon,
+  //  style: getModeStyles(accessMode),
+  //  inline: !!opts.inline,
+  //  small: !!opts.small,
+  //  svg: true
+  //});
 
   segments = segments.concat(transitLegs.map(function (leg) {
     var background = '#333';
@@ -131,18 +131,18 @@ module.exports = function(route, opts) {
     };
   }));
 */
-  if (egress) {
-    var egressMode = egress.mode.toLowerCase();
-    if (egressMode !== 'walk') {
-      segments.push({
-        mode: convert.modeToIcon(egressMode),
-        style: getModeStyles(egressMode),
-        inline: !!opts.inline,
-        small: !!opts.small,
-        svg: true
-      });
-    }
-  }
+  //if (egress) {
+  //  var egressMode = egress.mode.toLowerCase();
+  //  if (egressMode !== 'walk') {
+  //    segments.push({
+  //      mode: convert.modeToIcon(egressMode),
+  //      style: getModeStyles(egressMode),
+  //      inline: !!opts.inline,
+  //      small: !!opts.small,
+  //      svg: true
+  //    });
+  //  }
+  //}
 
   return segments
     .map(function(s) {
@@ -172,11 +172,11 @@ function patternFilter(by) {
   };
 }
 
-function getModeStyles(mode) {
-  var styles = transitive.getModeStyles(mode.toUpperCase());
-  var s = '';
-  for (var i in styles) {
-    s += i + ':' + styles[i] + ';';
-  }
-  return s;
-}
+//function getModeStyles(mode) {
+//  var styles = transitive.getModeStyles(mode.toUpperCase());
+//  var s = '';
+//  for (var i in styles) {
+//    s += i + ':' + styles[i] + ';';
+//  }
+//  return s;
+//}
