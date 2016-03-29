@@ -103,8 +103,15 @@ module.exports.drawRouteAmigo = function(route, mode) {
        var color_options = {
             color: color,
             opacity: 1,
+<<<<<<< HEAD
             weight: weight,
             dashArray: dasharray
+=======
+            weight: 3,
+            fillColor: '#000',
+            fillOpacity: 0.6,
+            dashArray: '3'
+>>>>>>> parent of 54bf337... filas puntiadas 6
         };
 
        route = new L.Polyline(L.PolylineUtil.decode(route, 5), color_options);
