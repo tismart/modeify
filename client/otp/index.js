@@ -32,18 +32,18 @@ module.exports = function profile(query, filter, callback) {
       callback('No options found', data);
     } else {
       query.profile = filter(data);
-      profiler.journey(query, function(err, journey) {
-        if (err) {
-          log.error('<-- error profiling', err);
-          callback(err, journey);
-        } else {
-          log('<-- profiled %s options', data.options.length);
+      //profiler.journey(query, function(err, journey) {
+      //  if (err) {
+      //    log.error('<-- error profiling', err);
+      //    callback(err, journey);
+      //  } else {
+      //    log('<-- profiled %s options', data.options.length);
           callback(null, {
             journey: journey,
             options: data.options
           });
-        }
-      });
+      //
+
     }
   });
 };
@@ -56,12 +56,12 @@ module.exports.plan = function (query, callback) {
             if (err || res.body.error || !res.ok) {
                 callback(err || res.body.error || res.text, res);
             } else {
-		        profiler.journeyWithPlan(res.body, function(err, journey) {
-                    if (err) {
-                        log.error('<-- error profiling', err);
-                        callback(err, journey);
-                    } else {
-                        log('<-- profiled %s options', res.body.length);
+		        //profiler.journeyWithPlan(res.body, function(err, journey) {
+                 //   if (err) {
+                 //       log.error('<-- error profiling', err);
+                 //       callback(err, journey);
+                 //   } else {
+                 //       log('<-- profiled %s options', res.body.length);
                         callback(null, {
                             journey: journey,
             //			    options: data.options
@@ -69,8 +69,9 @@ module.exports.plan = function (query, callback) {
                             plan: res.body.plan
                         });
 
-                    }
-		        });
+                 //   }
+		        //});
+
             }
             console.log("otp res.body->", res.body);
             console.log("otp res.body.plan->", res.body.plan);

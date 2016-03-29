@@ -131,7 +131,7 @@ function updateRoutes(plan, opts, callback) {
 		})
 	    );
         }
-	plan.set({options: planData.options, journey: data.journey});
+	plan.set({options: planData.options});
 	done(null, data);
 
         analytics.send_ac({
