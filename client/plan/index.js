@@ -218,16 +218,16 @@ Plan.prototype.setAddresses = function(from, to, callback) {
  * Rescore Options
  */
 
-//Plan.prototype.rescoreOptions = function() {
-//  var scorer = this.scorer();
-//  var options = this.options();
-//
-//  options.forEach(function(o) {
-//    o.rescore(scorer);
-//  });
-//
-//  this.store();
-//};
+Plan.prototype.rescoreOptions = function() {
+  var scorer = this.scorer();
+  var options = this.options();
+
+  options.forEach(function(o) {
+    o.rescore(scorer);
+  });
+
+  this.store();
+};
 
 /**
  * To Lower Case
@@ -331,15 +331,15 @@ Plan.prototype.generateQuery = function() {
  * Store in localStorage. Restrict this I/O to once every 25ms.
  */
 
-//Plan.prototype.store = debounce(function() {
-//  store(this);
-//}, DEBOUNCE_UPDATES);
+Plan.prototype.store = debounce(function() {
+ store(this);
+}, DEBOUNCE_UPDATES);
 //
 ///**
 // * Clear localStorage
 // */
 //
-//Plan.prototype.clearStore = store.clear;
+Plan.prototype.clearStore = store.clear;
 
 /**
  * Save URL
