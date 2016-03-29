@@ -84,12 +84,12 @@ module.exports.load = function(ctx, next) {
  * Sync plans with localStorage
  */
 
-//Plan.on('change', function(plan, name, val) {
-//  log('plan.%s changed to %s', name, val);
-//
-//  // Store in localStorage & track the change
-//  if (name !== 'options' && name !== 'journey' && name !== 'loading') plan.store();
-//});
+Plan.on('change', function(plan, name, val) {
+  log('plan.%s changed to %s', name, val);
+
+  // Store in localStorage & track the change
+  //if (name !== 'options' && name !== 'journey' && name !== 'loading') plan.store();
+});
 
 /**
  * Keep start/end times in sync
