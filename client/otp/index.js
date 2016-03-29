@@ -63,7 +63,7 @@ module.exports.plan = function (query, callback) {
                  //   } else {
                  //       log('<-- profiled %s options', res.body.length);
                         callback(null, {
-                            journey: journey,
+                            //journey: journey,
             //			    options: data.options
                             options: res.body,
                             plan: res.body.plan
