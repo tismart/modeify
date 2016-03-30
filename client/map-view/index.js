@@ -157,6 +157,18 @@ module.exports.marker_map = function(from, to, map){
        console.log("cordenadas drag from ->",result);
        _this.cleanPolyline();
        console.log("llama a plan -> ", Plan);
+
+       Plan.setAddresses(
+            '-121.97708129882812,37.49338360812417', // from longitud, latitud
+            '-121.93450927734375,37.49338360812417', // to
+            function (err, res) {
+              plan.updateRoutes();
+              console.log("aqui la data del plan 4 ->", plan.dataplan);
+            }
+          );
+
+       Plan.updateRoutes();
+       console.log("aqui la data del plan 3 ->", plan.dataplan);
     });
 
     markerto.on('dragend', function(e){
