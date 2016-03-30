@@ -156,6 +156,7 @@ module.exports.marker_map = function(from, to, map){
        var result = marker.getLatLng();
        console.log("cordenadas drag from ->",result);
        _this.cleanPolyline();
+       console.log("llama a plan -> ", Plan);
     });
 
     markerto.on('dragend', function(e){
@@ -163,6 +164,7 @@ module.exports.marker_map = function(from, to, map){
         var result = marker.getLatLng();
         console.log("cordenadas drag to ->",result);
         _this.cleanPolyline();
+        console.log("llama a plan -> ", Plan);
     });
 
     this.marker_creadas.push(markerform);
