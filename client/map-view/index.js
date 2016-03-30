@@ -3,7 +3,7 @@ var mapModule = require('map');
 var plugins = require('./leaflet_plugins');
 var polyUtil = require('./polyline_encoded.js');
 var routeboxer = require('./leaflet_routeboxer.js');
-
+var Plan = require('plan');
 
 var center = config.geocode().center.split(',').map(parseFloat)
 if (config.map_provider && config.map_provider() !== 'AmigoCloud') {

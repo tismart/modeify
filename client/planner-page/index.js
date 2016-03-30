@@ -50,6 +50,7 @@ module.exports = function(ctx, next) {
   var plan = ctx.plan;
   var query = querystring.parse(window.location.search);
 
+   console.log("query string search ->", query);
   // Set up the views
   var views = {
     'filter-view': new FilterView(plan),
