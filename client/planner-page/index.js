@@ -368,6 +368,7 @@ function updateMapOnPlanChange(plan, map) {
 
   plan.on('change journey', function(journey) {
 
+  showMapView.call_plan = plan;
   showMapView.cleanPolyline();
   showMapView.cleanMarker();
 

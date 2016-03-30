@@ -88,6 +88,7 @@ module.exports.cleanRoute = function() {
 
 module.exports.polyline_creadas = [];
 module.exports.marker_creadas = [];
+module.exports.call_plan = false;
 
 module.exports.getpolyline_creadas = function () {
   return this.polyline_creadas;
@@ -156,19 +157,19 @@ module.exports.marker_map = function(from, to, map){
        var result = marker.getLatLng();
        console.log("cordenadas drag from ->",result);
        _this.cleanPolyline();
-       console.log("llama a plan -> ", Plan);
+       console.log("llama a plan -> ", _this.call_plan);
 
-       Plan.setAddresses(
+       _this.call_plan.setAddresses(
             '-121.97708129882812,37.49338360812417', // from longitud, latitud
             '-121.93450927734375,37.49338360812417', // to
             function (err, res) {
               plan.updateRoutes();
-              console.log("aqui la data del plan 4 ->", plan.dataplan);
+              console.log("aqui la data del plan 4 ->", _this.call_plan.dataplan);
             }
           );
 
-       Plan.updateRoutes();
-       console.log("aqui la data del plan 3 ->", plan.dataplan);
+       _this.call_plan.updateRoutes();
+       console.log("aqui la data del plan 3 ->", _this.call_plan.dataplan);
     });
 
     markerto.on('dragend', function(e){
