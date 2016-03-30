@@ -131,6 +131,8 @@ View.prototype.save = function(el) {
 	var name = el.name;
 	var val = el.value;
 
+	console.log("el -> ", el);
+
     console.log("name", name);
     console.log("val", val);
     console.log("plan.validCoordinates()", plan.validCoordinates());
