@@ -308,7 +308,8 @@ Plan.prototype.setModes = function(csv) {
 Plan.prototype.generateQuery = function() {
   var from = this.from_ll() || {};
   var to = this.to_ll() || {};
-
+  console.log("query from ->", from);
+  console.log("query to ->", to);
   // Transit modes
   var modes = [];//['WALK'];
 
