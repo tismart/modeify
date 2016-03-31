@@ -188,6 +188,7 @@ Plan.prototype.setAddress = function(name, address, callback, extra) {
     if (isCoordinate) {
 
       var callbackAmigo = function (err, reverse) {
+        console.log("my reverse value", reverse);
         var changes = {};
             if (reverse) {
               var geocode_features = reverse.features;
@@ -209,6 +210,7 @@ Plan.prototype.setAddress = function(name, address, callback, extra) {
               changes[name + '_id'] = geocode_features[0].properties.id;
               changes[name + '_valid'] = true;
 
+              console.log("my change ->", changes);
               plan.set(changes);
 
               callback(null, reverse);
@@ -227,6 +229,7 @@ Plan.prototype.setAddress = function(name, address, callback, extra) {
 
             }
         };
+
         geocode.reverseAmigo(c, callbackAmigo);
     }else {
       plan.setAddress('', '', callback);
