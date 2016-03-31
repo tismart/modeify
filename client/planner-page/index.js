@@ -209,6 +209,7 @@ View.prototype.scroll = function(e) {
  */
 
 View.prototype.onsubmit = function(e) {
+  console.log("submit");
   e.preventDefault();
 };
 

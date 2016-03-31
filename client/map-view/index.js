@@ -160,29 +160,34 @@ module.exports.marker_map = function(from, to, map){
        var result = marker.getLatLng();
        _this.cleanPolyline();
        var datafromto = JSON.parse(localStorage.getItem('datafromto'));
-
+         var plan = session.plan();
+        /*
        var placeChanged = debounce(function(name, coordinate) {
        //var plan = _this.call_plan;
        var plan = session.plan();
+
        plan.setAddress(name, coordinate.lng + ',' + coordinate.lat, function(err, rees) {
-            if (!err) plan.updateRoutes();
+            if (!err){
+                plan.updateRoutes();
+            }
           });
         }, 150, true);
 
-        placeChanged('from', result);
+        */
+        //placeChanged('from', result);
         console.log("si debounce");
-       /*
-       _this.call_plan.setAddresses(
+
+       plan.setAddresses(
             result.lng + "," + result.lat, // from longitud, latitud
             datafromto.to, // to
             function (err, res) {
-                 _this.call_plan.updateRoutes();
+                 plan.updateRoutes();
             }
           );
-        */
+
         console.log("Result ->", result.lng + "," + result.lat);
         console.log("datafromto  ->", datafromto);
-       _this.call_plan.updateRoutes();
+       //_this.call_plan.updateRoutes();
     });
 
     markerto.on('dragend', function(e){
