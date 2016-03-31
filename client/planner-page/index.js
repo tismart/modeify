@@ -383,6 +383,8 @@ function updateMapOnPlanChange(plan, map) {
         if(!(sesion_plan === null)) {
                 var itineraries = sesion_plan.itineraries;
                 localStorage.setItem('datafromto', JSON.stringify({"from" : sesion_plan.from.lon + "," + sesion_plan.from.lat, "to":sesion_plan.to.lon + "," + sesion_plan.to.lat}));
+                console.log("from sesion ->", [sesion_plan.from.lat,sesion_plan.from.lon]);
+                console.log("from sesion ->", [sesion_plan.to.lat,sesion_plan.to.lon]);
                 showMapView.marker_map([sesion_plan.from.lat,sesion_plan.from.lon],[sesion_plan.to.lat,sesion_plan.to.lon], map);
 
                 for (i = 0; i < itineraries.length; i++) {
