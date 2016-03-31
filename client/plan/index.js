@@ -214,6 +214,10 @@ Plan.prototype.setAddress = function(name, address, callback, extra) {
               changes[name + '_id'] = geocode_features[0].properties.id;
               changes[name + '_valid'] = true;
 
+              plan[name + '_ll'] = {lat: parseFloat(geocode_features[0].geometry.coordinates[1]), lng: parseFloat(geocode_features[0].geometry.coordinates[0])};
+              plan[name + '_id'] = geocode_features[0].properties.id;
+              plan[name + '_valid'] = true;
+
               console.log("my change ->", changes);
               plan.set(changes);
 
