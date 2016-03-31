@@ -187,7 +187,7 @@ module.exports.marker_map = function(from, to, map){
                 //plan.updateRoutes();
                 console.log("actualiza address");
 
-                document.getElementById("locations-form").submit();
+                document.getElementById("misearch").click();
           });
         }, 150, true);
 

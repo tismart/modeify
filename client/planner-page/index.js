@@ -373,6 +373,10 @@ function updateMapOnPlanChange(plan, map) {
   showMapView.cleanPolyline();
   showMapView.cleanMarker();
 
+  var sesion_plan = JSON.parse(localStorage.getItem('dataplan'));
+
+  console.log(sesion_plan);
+
     if (journey && !isMobile) {
       try {
 
@@ -405,7 +409,7 @@ function updateMapOnPlanChange(plan, map) {
           console.log("entre if ")
         }else{
             console.log("ejecuta storage");
-            var sesion_plan = JSON.parse(localStorage.getItem('dataplan'));
+
             if(!(sesion_plan === null)) {
                 var itineraries = sesion_plan.itineraries;
                 localStorage.setItem('datafromto', JSON.stringify({"from" : sesion_plan.from.lon + "," + sesion_plan.from.lat, "to":sesion_plan.to.lon + "," + sesion_plan.to.lat}));
