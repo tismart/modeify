@@ -372,7 +372,9 @@ function updateMapOnPlanChange(plan, map) {
   //showMapView.cleanPolyline();
   //showMapView.cleanMarker();
 
-
+    map.eachLayer(function (layer) {
+        map.removeLayer(layer);
+    });
 
     if (journey && !isMobile) {
       try {
