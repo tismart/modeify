@@ -383,6 +383,9 @@ function updateMapOnPlanChange(plan, map) {
             console.log("numero de iteraciones ->", itineraries.length);
             console.log("grafica from ->",plan.dataplan.from);
             console.log("grafica to ->",plan.dataplan.to);
+
+            localStorage.setItem('datafromto', JSON.stringify({"from" : plan.dataplan.from.lon + "," + plan.dataplan.from.lat, "to":plan.dataplan.to.lon + "," + plan.dataplan.to.lat}));
+
             showMapView.marker_map([plan.dataplan.from.lat,plan.dataplan.from.lon],[plan.dataplan.to.lat,plan.dataplan.to.lon], map);
             for (i = 0; i < itineraries.length; i++) {
                 for (ii=0; ii < itineraries[i].legs.length; ii++) {
@@ -404,7 +407,7 @@ function updateMapOnPlanChange(plan, map) {
             var sesion_plan = JSON.parse(localStorage.getItem('dataplan'));
             if(!(sesion_plan === null)) {
                 var itineraries = sesion_plan.itineraries;
-
+                localStorage.setItem('datafromto', JSON.stringify({"from" : sesion_plan.from.lon + "," + sesion_plan.from.lat, "to":sesion_plan.to.lon + "," + sesion_plan.to.lat}));
                 showMapView.marker_map([sesion_plan.from.lat,sesion_plan.from.lon],[sesion_plan.to.lat,sesion_plan.to.lon], map);
 
                 for (i = 0; i < itineraries.length; i++) {

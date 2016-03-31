@@ -158,7 +158,7 @@ module.exports.marker_map = function(from, to, map){
        console.log("cordenadas drag from ->",result);
        _this.cleanPolyline();
        console.log("llama a plan -> ", _this.call_plan);
-
+        console.log('datafromto ->', JSON.parse(localStorage.getItem('datafromto')));
        _this.call_plan.setAddresses(
             '-121.97708129882812,37.49338360812417', // from longitud, latitud
             '-121.93450927734375,37.49338360812417', // to
