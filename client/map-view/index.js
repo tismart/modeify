@@ -178,7 +178,7 @@ module.exports.marker_map = function(from, to, map){
                  if (err) {
 				    console.log('error al actualizar', err);
 				} else {
-				    placeChanged('from', result);
+
 				    document.getElementById("misearch").click();
 				    console.log("actualiza addresses 600");
 				}
