@@ -191,7 +191,7 @@ Plan.prototype.setAddress = function(name, address, callback, extra) {
         var changes = {};
             if (reverse) {
               var geocode_features = reverse.features;
-              changes[name] = "";
+              changes[name] = name;
               if (isCoordinate) {
                 if (!(extra === undefined)) {
                     changes[name] = extra.properties.label;

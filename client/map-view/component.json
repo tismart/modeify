@@ -6,7 +6,8 @@
   "local": [
     "config",
     "plan",
-    "session"
+    "session",
+    "otp"
   ],
   "scripts": [
     "index.js",

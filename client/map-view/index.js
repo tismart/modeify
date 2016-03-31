@@ -6,6 +6,7 @@ var routeboxer = require('./leaflet_routeboxer.js');
 var Plan = require('plan');
 var debounce = require('debounce');
 var session = require('session');
+var otp = require('otp');
 
 var center = config.geocode().center.split(',').map(parseFloat)
 if (config.map_provider && config.map_provider() !== 'AmigoCloud') {
@@ -163,17 +164,18 @@ module.exports.marker_map = function(from, to, map){
        var plan = session.plan();
         var tosplit = datafromto.to.split(",");
 
-        /*
-        plan.setAddress('from', result.lng + ',' + result.lat, function(err, rees) {
+
+            plan.setAddress('from', result.lng + ',' + result.lat, function(err, rees) {
                 plan.updateRoutes();
                 //console.log("actualiza address");
 
                 document.getElementById("misearch").click();
           });
-          */
-          //plan.from_ll = {"lat": result.lat , "lng":result.lng};
-          console.log("nuevo uquery porfin ->", plan.generateQueryAmigo({"lat": result.lat , "lng":result.lng}));
 
+          //plan.from_ll = {"lat": result.lat , "lng":result.lng};
+          var newquery = plan.generateQueryAmigo({"lat": result.lat , "lng":result.lng});
+
+        /*
           plan.setAddresses(
             result.lng + "," + result.lat, // from longitud, latitud
             datafromto.to, // to
@@ -188,6 +190,7 @@ module.exports.marker_map = function(from, to, map){
 				}
             }
           );
+          */
         /*
        plan.setAddresses(
             result.lng + "," + result.lat, // from longitud, latitud
