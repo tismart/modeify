@@ -162,12 +162,28 @@ module.exports.marker_map = function(from, to, map){
        var datafromto = JSON.parse(localStorage.getItem('datafromto'));
        var plan = session.plan();
         var tosplit = datafromto.to.split(",");
+        /*
         plan.setAddress('from', result.lng + ',' + result.lat, function(err, rees) {
                 plan.updateRoutes();
                 //console.log("actualiza address");
 
                 document.getElementById("misearch").click();
           });
+          */
+
+          plan.setAddresses(
+            result.lng + "," + result.lat, // from longitud, latitud
+            datafromto.to, // to
+            function (err, res) {
+                 if (err) {
+				    console.log('error al actualizar', err);
+				} else {
+				    placeChanged('from', result);
+				    document.getElementById("misearch").click();
+				    console.log("actualiza addresses 600");
+				}
+            }
+          );
         /*
        plan.setAddresses(
             result.lng + "," + result.lat, // from longitud, latitud
