@@ -1,5 +1,8 @@
 {
   "name": "map-view",
+  "dependencies": {
+    "component/debounce": "*"
+  },
   "local": [
     "config",
     "plan"
