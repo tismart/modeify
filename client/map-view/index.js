@@ -207,7 +207,10 @@ module.exports.marker_map_point = function(to, map){
 
 
 
-module.exports.drawRouteAmigo = function(route,mode) {
+module.exports.drawRouteAmigo = function(legs,mode) {
+
+      var route = legs.legGeometry.points;
+
       var color = '#000';
       var weight = 5;
       var dasharray= '';
