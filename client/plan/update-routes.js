@@ -74,7 +74,7 @@ function updateRoutes(plan, opts, callback) {
         planData = {options: []};
 
         itineraries = data.plan.itineraries;
-        module.exports.dataplan = data.plan;
+        module.exports.dataplan = data.options;
 
         var sesion_plan = JSON.parse(localStorage.getItem('dataplan'));
         if (!(sesion_plan === null)) {
