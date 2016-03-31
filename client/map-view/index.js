@@ -161,7 +161,7 @@ module.exports.marker_map = function(from, to, map){
             result.lng + "," + result.lat, // from longitud, latitud
             datafromto.to, // to
             function (err, res) {
-              _this.updateRoutes();
+              Plan.updateRoutes();
             }
           );
 
