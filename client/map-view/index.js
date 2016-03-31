@@ -164,18 +164,18 @@ module.exports.marker_map = function(from, to, map){
        var plan = session.plan();
         var tosplit = datafromto.to.split(",");
 
-        /*
+             plan.set({"from": {"lat": result.lat , "lng":result.lng}});
             plan.setAddress('from', result.lng + ',' + result.lat, function(err, rees) {
                 plan.updateRoutes();
                 //console.log("actualiza address");
 
-                document.getElementById("misearch").click();
-          });*/
+                //document.getElementById("misearch").click();
+          });
 
-          plan.set({"from": {"lat": result.lat , "lng":result.lng}});
+
           var newquery = plan.generateQueryAmigo({"lat": result.lat , "lng":result.lng});
 
-
+        /*
           plan.setAddresses(
             result.lng + "," + result.lat, // from longitud, latitud
             datafromto.to, // to
@@ -190,7 +190,7 @@ module.exports.marker_map = function(from, to, map){
 				}
             }
           );
-
+        */
         /*
        plan.setAddresses(
             result.lng + "," + result.lat, // from longitud, latitud
