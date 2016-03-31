@@ -81,7 +81,7 @@ function updateRoutes(plan, opts, callback) {
             localStorage.removeItem('dataplan');
         }
 
-        localStorage.setItem('dataplan', JSON.stringify(data.plan));
+        localStorage.setItem('dataplan', JSON.stringify(data.options));
 
             sesion_plan = JSON.parse(localStorage.getItem('dataplan'));
             console.log("si guarda en storage ->", sesion_plan);
