@@ -193,12 +193,12 @@ Plan.prototype.setAddress = function(name, address, callback, extra) {
               var geocode_features = reverse.features;
               changes[name] = "";
               if (isCoordinate) {
-                if (!(extra.properties === undefined)) {
+                if (!(extra === undefined)) {
                     changes[name] = extra.properties.label;
                 }
 
               }else {
-                if (!(extra.properties === undefined)) {
+                if (!(extra === undefined)) {
                     changes[name] = extra.properties.label;
                 }
 
