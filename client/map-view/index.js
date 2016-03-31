@@ -155,29 +155,34 @@ module.exports.marker_map = function(from, to, map){
     markerform.on('dragend', function(e){
        var marker = e.target;
        var result = marker.getLatLng();
-       console.log("cordenadas drag from ->",result);
        _this.cleanPolyline();
-       console.log("llama a plan -> ", _this.call_plan);
-        console.log('datafromto ->', JSON.parse(localStorage.getItem('datafromto')));
+       var datafromto = JSON.parse(localStorage.getItem('datafromto'));
        _this.call_plan.setAddresses(
-            '-121.97708129882812,37.49338360812417', // from longitud, latitud
-            '-121.93450927734375,37.49338360812417', // to
+            result.lng + "," + result.lat, // from longitud, latitud
+            datafromto.to, // to
             function (err, res) {
-              plan.updateRoutes();
-              console.log("aqui la data del plan 4 ->", _this.call_plan.dataplan);
+              _this.updateRoutes();
             }
           );
 
        _this.call_plan.updateRoutes();
-       console.log("aqui la data del plan 3 ->", _this.call_plan.dataplan);
     });
 
     markerto.on('dragend', function(e){
         var marker = e.target;
         var result = marker.getLatLng();
-        console.log("cordenadas drag to ->",result);
         _this.cleanPolyline();
-        console.log("llama a plan -> ", Plan);
+        var datafromto = JSON.parse(localStorage.getItem('datafromto'));
+       _this.call_plan.setAddresses(
+            datafromto.from, // from longitud, latitud
+            result.lng + "," + result.lat, // to
+            function (err, res) {
+              _this.updateRoutes();
+            }
+          );
+
+       _this.call_plan.updateRoutes();
+
     });
 
     this.marker_creadas.push(markerform);
