@@ -160,24 +160,38 @@ module.exports.marker_map = function(from, to, map){
        var result = marker.getLatLng();
        _this.cleanPolyline();
        var datafromto = JSON.parse(localStorage.getItem('datafromto'));
-         var plan = session.plan();
-
+       var plan = session.plan();
+        var tosplit = datafromto.to.split(",");
        var placeChanged = debounce(function(name, coordinate) {
        //var plan = _this.call_plan;
+        console.log("to split ->", tosplit);
+
+            plan.journey({
+                  places: [
+                    {
+                      place_id: 'from',
+                      place_lat: result.lat,
+                      place_lon: result.lng,
+                      place_name: 'From'
+                   },
+                    {
+                      place_id: 'to',
+                      place_lat: tosplit[0].trim(),
+                      place_lon: tosplit[1].trim(),
+                      place_name: 'To'
+                    }
+                  ]
+        });
 
        plan.setAddress(name, coordinate.lng + ',' + coordinate.lat, function(err, rees) {
-            if (!err){
                 plan.updateRoutes();
                 console.log("actualiza address");
-            }else {
-                console.log("error linea 172");
-            }
           });
         }, 150, true);
 
 
-        //placeChanged('from', result);
-
+       placeChanged('from', result);
+        /*
        plan.setAddresses(
             result.lng + "," + result.lat, // from longitud, latitud
             datafromto.to, // to
@@ -190,10 +204,10 @@ module.exports.marker_map = function(from, to, map){
 				}
             }
           );
-
+        */
         console.log("Result ->", result.lng + "," + result.lat);
         console.log("datafromto  ->", datafromto);
-       plan.updateRoutes();
+       //plan.updateRoutes();
     });
 
     markerto.on('dragend', function(e){
