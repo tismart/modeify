@@ -179,8 +179,9 @@ module.exports.marker_map = function(from, to, map){
 				    console.log('error al actualizar', err);
 				} else {
 
+                    plan.updateRoutes();
 				    document.getElementById("misearch").click();
-				    console.log("actualiza addresses 600");
+
 				}
             }
           );
