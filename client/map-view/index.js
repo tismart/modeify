@@ -5,6 +5,7 @@ var polyUtil = require('./polyline_encoded.js');
 var routeboxer = require('./leaflet_routeboxer.js');
 var Plan = require('plan');
 var debounce = require('debounce');
+var session = require('session');
 
 var center = config.geocode().center.split(',').map(parseFloat)
 if (config.map_provider && config.map_provider() !== 'AmigoCloud') {
@@ -161,7 +162,8 @@ module.exports.marker_map = function(from, to, map){
        var datafromto = JSON.parse(localStorage.getItem('datafromto'));
 
        var placeChanged = debounce(function(name, coordinate) {
-       var plan = _this.call_plan;
+       //var plan = _this.call_plan;
+       var plan = session.plan();
        plan.setAddress(name, coordinate.lng + ',' + coordinate.lat, function(err, rees) {
             if (!err) plan.updateRoutes();
           });

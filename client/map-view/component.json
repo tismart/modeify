@@ -5,7 +5,8 @@
   },
   "local": [
     "config",
-    "plan"
+    "plan",
+    "session"
   ],
   "scripts": [
     "index.js",
