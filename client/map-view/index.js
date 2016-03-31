@@ -168,6 +168,7 @@ module.exports.marker_map = function(from, to, map){
         }, 150, true);
 
         placeChanged('from', result);
+        console.log("si debounce");
        /*
        _this.call_plan.setAddresses(
             result.lng + "," + result.lat, // from longitud, latitud

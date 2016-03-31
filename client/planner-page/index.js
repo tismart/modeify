@@ -369,8 +369,19 @@ function updateMapOnPlanChange(plan, map) {
   plan.on('change journey', function(journey) {
 
   showMapView.call_plan = plan;
-  showMapView.cleanPolyline();
-  showMapView.cleanMarker();
+  //showMapView.cleanPolyline();
+  //showMapView.cleanMarker();
+
+  for(i in m._layers) {
+        if(m._layers[i]._path != undefined) {
+            try {
+                m.removeLayer(m._layers[i]);
+            }
+            catch(e) {
+                console.log("problem with " + e + m._layers[i]);
+            }
+        }
+    }
 
     if (journey && !isMobile) {
       try {
