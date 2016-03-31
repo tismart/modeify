@@ -165,7 +165,7 @@ module.exports.marker_map = function(from, to, map){
             }
           );
 
-        console.log("Result ->", result);
+        console.log("Result ->", result.lng + "," + result.lat);
         console.log("datafromto  ->", datafromto);
        _this.call_plan.updateRoutes();
     });
@@ -183,7 +183,7 @@ module.exports.marker_map = function(from, to, map){
             }
           );
 
-        console.log("Result ->", result);
+        console.log("Result ->", result.lng + "," + result.lat);
         console.log("datafromto  ->", datafromto);
 
        _this.call_plan.updateRoutes();
