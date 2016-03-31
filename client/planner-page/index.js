@@ -404,7 +404,8 @@ function updateMapOnPlanChange(plan, map) {
             }
 
             for (var k = 0; k < patterns.length; k++) {
-                  var route_id = patterns[k].routeId;
+                for (var l=0; l < patterns[k].length; l++) {
+                  var route_id = patterns[l].routeId;
                   var route_id_split = route_id.split(":");
                   var agency = route_id_split[0].toLowerCase();
                   var line = route_id_split[1].toLowerCase();
@@ -412,13 +413,16 @@ function updateMapOnPlanChange(plan, map) {
                   console.log("agency ->", agency);
                   console.log("line ->", line);
                   console.log("routeId ->", routeId);
+                }
             }
 
             for (var n = 0; n < routes.length; n++) {
-                  var route_short_name = routes[k].shortName;
-                  var route_long_name = routes[k].longName.toUpperCase();
+                 for (var m=0; m < routes[n].length; m++) {
+                  var route_short_name = routes[m].shortName;
+                  var route_long_name = routes[m].longName.toUpperCase();
                   console.log("route_short_name ->", route_short_name);
                   console.log("route_long_name ->", route_long_name);
+                 }
             }
 
           console.log("entre if ")
