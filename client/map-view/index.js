@@ -162,6 +162,7 @@ module.exports.marker_map = function(from, to, map){
        var datafromto = JSON.parse(localStorage.getItem('datafromto'));
        var plan = session.plan();
         var tosplit = datafromto.to.split(",");
+
         /*
         plan.setAddress('from', result.lng + ',' + result.lat, function(err, rees) {
                 plan.updateRoutes();
@@ -170,7 +171,9 @@ module.exports.marker_map = function(from, to, map){
                 document.getElementById("misearch").click();
           });
           */
-          plan.from_ll = {"lat": result.lat , "lng":result.lng};
+          //plan.from_ll = {"lat": result.lat , "lng":result.lng};
+          console.log("nuevo uquery porfin ->", plan.generateQueryAmigo({"lat": result.lat , "lng":result.lng}));
+
           plan.setAddresses(
             result.lng + "," + result.lat, // from longitud, latitud
             datafromto.to, // to
