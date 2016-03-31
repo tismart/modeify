@@ -371,56 +371,6 @@ Plan.prototype.generateQuery = function() {
   };
 };
 
-Plan.prototype.generateQueryAmigo = function(afrom) {
-  var from = afrom;
-  var to = this.to_ll() || {};//ato;
-  console.log("query from amigo->", from);
-  console.log("query to amigo ->", to);
-  // Transit modes
-  var modes = [];//['WALK'];
-
-  if (this.bikeShare()) modes.push('BICYCLE_RENT');
-
-  if (this.car()) {
-    modes.push('CAR');
-  }
-  if (this.bike()) {
-    modes.push('BICYCLE');
-  } else {
-    modes.push('WALK');
-  }
-  if (this.bus()) modes.push('BUSISH');
-  if (this.train()) modes.push('TRAINISH');
-  if (modes.length==0) modes.push('WALK');
-
-  var startTime = this.start_time();
-  var endTime = this.end_time();
-  var scorer = this.scorer();
-
-  // Convert the hours into strings
-  startTime += ':00';
-  endTime = endTime === 24 ? '23:59' : endTime + ':00';
-
-  return {
-    date: this.nextDate(),
-    mode: modes.join(','),
-      time: startTime,
-      fromPlace: (from.lat + ',' + from.lng),
-      toPlace: (to.lat + ',' + to.lng),
-      numItineraries: 3,
-      maxWalkDistance: 20000,
-      bikeSpeed: 10,
-      bikeBoardCost: 15,
-      walkReluctance: 10,
-      clampInitialWait: 60,
-//      waitAtBeginningFactor: 0.5,
-      triangleSafetyFactor: 0.9,
-      triangleSlopeFactor: 0.5,
-      triangleTimeFactor: 0.9,
-      optimize: 'QUICK'
-  };
-};
-
 /**
  * Store in localStorage. Restrict this I/O to once every 25ms.
  */

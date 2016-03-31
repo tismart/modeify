@@ -167,16 +167,10 @@ module.exports.marker_map = function(from, to, map){
                 console.log("este es plan ->", plan);
           });
 
-
-          var newquery = plan.generateQueryAmigo({"lat": result.lat , "lng":result.lng});
-
-        console.log("Result ->", result.lng + "," + result.lat);
-        console.log("datafromto  ->", datafromto);
-
     });
 
     markerto.on('dragend', function(e){
-           var marker = e.target;
+       var marker = e.target;
        var result = marker.getLatLng();
        _this.cleanPolyline();
        var datafromto = JSON.parse(localStorage.getItem('datafromto'));
@@ -188,12 +182,6 @@ module.exports.marker_map = function(from, to, map){
                 console.log("ejecuta reverse to ->", rees);
                 console.log("este es plan to ->", plan);
           });
-
-
-          var newquery = plan.generateQueryAmigo({"lat": result.lat , "lng":result.lng});
-
-        console.log("Result to ->", result.lng + "," + result.lat);
-        console.log("datafromto to ->", datafromto);
 
     });
 

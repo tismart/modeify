@@ -71,14 +71,6 @@ module.exports = function(ctx, next) {
     // Show the map
     var map = showMapView(ctx.view.find('.MapView'));
 
-    console.log("map ->", map);
-
-    // Create the transitive layer
-    //var transitiveLayer = new LeafletTransitiveLayer(transitive);
-
-    // Set the transitive layer
-    //map.addLayer(transitiveLayer);
-
     // Update map on plan change
     updateMapOnPlanChange(plan, map);
 
@@ -141,8 +133,6 @@ module.exports = function(ctx, next) {
     if ((query.from && query.to)) {
       showQuery(query);
     } else {
-      console.log("plan.coordinateIsValid(from)", plan.coordinateIsValid(from));
-      console.log("plan.coordinateIsValid(to)", plan.coordinateIsValid(to));
 
       if (plan.coordinateIsValid(from) && plan.coordinateIsValid(to)) {
           plan.setAddresses(
@@ -150,11 +140,9 @@ module.exports = function(ctx, next) {
             to.lng + ',' + to.lat, // to
             function (err, res) {
               plan.updateRoutes();
-              console.log("aqui la data del plan 4 ->", plan.dataplan);
             }
           );
           plan.updateRoutes();
-          console.log("aqui la data del plan 3 ->", plan.dataplan);
       } else {
           console.log(from);
           console.log(to);
@@ -191,8 +179,6 @@ View.prototype.reverseCommute = function(e) {
   });
 
   plan.updateRoutes();
-
-  console.log("aqui la data del plan 5 ->", plan.dataplan);
 };
 
 /**
@@ -282,7 +268,6 @@ View.prototype.showSidePanel = function (e) {
 
     plan = session.plan();
     plan.updateRoutes();
-    //transitive.updateData(plan.journey());
 
     plan.journey();
 
@@ -312,8 +297,6 @@ function showQuery(query) {
       places: plan.generatePlaces()
     });
     plan.updateRoutes();
-
-    console.log("aqui la data del plan 1 ->", plan.dataplan);
   } else {
       if (!plan.validCoordinates()) {
 	  plan.loading(false);
@@ -328,8 +311,6 @@ function showQuery(query) {
           places: plan.generatePlaces()
         });
         plan.updateRoutes();
-
-        console.log("aqui la data del plan 2 ->", plan.dataplan);
       }
     });
 }
@@ -341,31 +322,6 @@ function showQuery(query) {
  */
 
 function updateMapOnPlanChange(plan, map) {
-  // Register plan update events
-    /*
-    for (i in map._layers) {
-        if (map._layers[i].options.format == undefined) {
-            try {
-                map.removeLayer(map._layers[i]);
-            } catch (e) {
-                console.log("problem with " + e + map._layers[i]);
-            }
-        }
-    }
-    */
-
-    //map.removeLayer(polyline);
-/*
-
-  for (i in polyline_creadas) {
-        try {
-                map.removeLayer(polyline_creadas[i]);
-            } catch (e) {
-                console.log("problem with " + e + map._layers[i]);
-            }
-
-  }
-  */
 
   plan.on('change journey', function(journey) {
 
@@ -374,8 +330,6 @@ function updateMapOnPlanChange(plan, map) {
   showMapView.cleanMarker();
 
   var sesion_plan = JSON.parse(localStorage.getItem('dataplan'));
-
-  console.log("mi sesion de plan ->",sesion_plan);
 
     if (journey && !isMobile) {
       try {
