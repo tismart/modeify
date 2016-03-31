@@ -370,12 +370,8 @@ function updateMapOnPlanChange(plan, map) {
   plan.on('change journey', function(journey) {
 
   showMapView.call_plan = plan;
-  //showMapView.cleanPolyline();
-  //showMapView.cleanMarker();
-
-    map.eachLayer(function (layer) {
-        map.removeLayer(layer);
-    });
+  showMapView.cleanPolyline();
+  showMapView.cleanMarker();
 
     if (journey && !isMobile) {
       try {
