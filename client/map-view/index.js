@@ -164,18 +164,18 @@ module.exports.marker_map = function(from, to, map){
 
        var placeChanged = debounce(function(name, coordinate) {
        //var plan = _this.call_plan;
-       var plan = session.plan();
 
        plan.setAddress(name, coordinate.lng + ',' + coordinate.lat, function(err, rees) {
             if (!err){
                 plan.updateRoutes();
+            }else {
+                console.log("error linea 172");
             }
           });
         }, 150, true);
 
 
         //placeChanged('from', result);
-        console.log("si debounce");
 
        plan.setAddresses(
             result.lng + "," + result.lat, // from longitud, latitud
@@ -189,11 +189,9 @@ module.exports.marker_map = function(from, to, map){
             }
           );
 
-       plan.loading(true);
-
         console.log("Result ->", result.lng + "," + result.lat);
         console.log("datafromto  ->", datafromto);
-       //_this.call_plan.updateRoutes();
+       plan.updateRoutes();
     });
 
     markerto.on('dragend', function(e){
