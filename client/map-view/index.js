@@ -172,7 +172,7 @@ module.exports.marker_map = function(from, to, map){
                 document.getElementById("misearch").click();
           });*/
 
-          plan.from_ll = {"lat": result.lat , "lng":result.lng};
+          plan.set({"from": {"lat": result.lat , "lng":result.lng}});
           var newquery = plan.generateQueryAmigo({"lat": result.lat , "lng":result.lng});
 
 
