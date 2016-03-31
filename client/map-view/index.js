@@ -158,6 +158,14 @@ module.exports.marker_map = function(from, to, map){
        var result = marker.getLatLng();
        _this.cleanPolyline();
        var datafromto = JSON.parse(localStorage.getItem('datafromto'));
+        _this.call_plan.setAddress(
+            "from",
+            result.lng + "," + result.lat,
+            function (err, res) {
+                 _this.call_plan.updateRoutes();
+            }
+        );
+       /*
        _this.call_plan.setAddresses(
             result.lng + "," + result.lat, // from longitud, latitud
             datafromto.to, // to
@@ -165,7 +173,7 @@ module.exports.marker_map = function(from, to, map){
                  _this.call_plan.updateRoutes();
             }
           );
-
+        */
         console.log("Result ->", result.lng + "," + result.lat);
         console.log("datafromto  ->", datafromto);
        //_this.call_plan.updateRoutes();
@@ -176,6 +184,7 @@ module.exports.marker_map = function(from, to, map){
         var result = marker.getLatLng();
         _this.cleanPolyline();
         var datafromto = JSON.parse(localStorage.getItem('datafromto'));
+        /*
        _this.call_plan.setAddresses(
             datafromto.from, // from longitud, latitud
             result.lng + "," + result.lat, // to
@@ -183,7 +192,15 @@ module.exports.marker_map = function(from, to, map){
                  _this.call_plan.updateRoutes();
             }
           );
+        */
 
+        _this.call_plan.setAddress(
+            "to",
+            result.lng + "," + result.lat,
+            function (err, res) {
+                 _this.call_plan.updateRoutes();
+            }
+        );
         console.log("Result ->", result.lng + "," + result.lat);
         console.log("datafromto  ->", datafromto);
 
