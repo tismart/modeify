@@ -182,7 +182,7 @@ module.exports.marker_map = function(from, to, map){
         */
         console.log("Result ->", result.lng + "," + result.lat);
         console.log("datafromto  ->", datafromto);
-       //_this.call_plan.updateRoutes();
+       _this.call_plan.updateRoutes();
     });
 
     markerto.on('dragend', function(e){
