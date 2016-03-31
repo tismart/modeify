@@ -162,20 +162,12 @@ module.exports.marker_map = function(from, to, map){
        var datafromto = JSON.parse(localStorage.getItem('datafromto'));
        var plan = session.plan();
         var tosplit = datafromto.to.split(",");
-       var placeChanged = debounce(function(name, coordinate) {
-       //var plan = _this.call_plan;
-        console.log("to split ->", tosplit);
-
-       plan.setAddress(name, coordinate.lng + ',' + coordinate.lat, function(err, rees) {
-                plan.updateRoutes();
-                console.log("actualiza address");
+        plan.setAddress('from', result.lng + ',' + result.lat, function(err, rees) {
+                //plan.updateRoutes();
+                //console.log("actualiza address");
 
                 document.getElementById("misearch").click();
           });
-        }, 150, true);
-
-
-       placeChanged('from', result);
         /*
        plan.setAddresses(
             result.lng + "," + result.lat, // from longitud, latitud
