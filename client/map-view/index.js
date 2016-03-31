@@ -163,7 +163,7 @@ module.exports.marker_map = function(from, to, map){
        var plan = session.plan();
         var tosplit = datafromto.to.split(",");
         plan.setAddress('from', result.lng + ',' + result.lat, function(err, rees) {
-                //plan.updateRoutes();
+                plan.updateRoutes();
                 //console.log("actualiza address");
 
                 document.getElementById("misearch").click();
