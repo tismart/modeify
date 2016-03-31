@@ -196,11 +196,15 @@ Plan.prototype.setAddress = function(name, address, callback, extra) {
               if (isCoordinate) {
                 if (!(extra === undefined)) {
                     changes[name] = extra.properties.label;
+                }else {
+                    changes[name] = geocode_features[0].properties.label;
                 }
 
               }else {
                 if (!(extra === undefined)) {
                     changes[name] = extra.properties.label;
+                }else {
+                    changes[name] = geocode_features[0].properties.label;
                 }
 
               }
