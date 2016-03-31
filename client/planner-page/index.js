@@ -372,13 +372,13 @@ function updateMapOnPlanChange(plan, map) {
   //showMapView.cleanPolyline();
   //showMapView.cleanMarker();
 
-  for(i in m._layers) {
-        if(m._layers[i]._path != undefined) {
+  for(i in map._layers) {
+        if(map._layers[i]._path != undefined) {
             try {
-                m.removeLayer(m._layers[i]);
+                map.removeLayer(map._layers[i]);
             }
             catch(e) {
-                console.log("problem with " + e + m._layers[i]);
+                console.log("problem with " + e + map._layers[i]);
             }
         }
     }
