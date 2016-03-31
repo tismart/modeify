@@ -168,6 +168,7 @@ module.exports.marker_map = function(from, to, map){
        plan.setAddress(name, coordinate.lng + ',' + coordinate.lat, function(err, rees) {
             if (!err){
                 plan.updateRoutes();
+                console.log("actualiza address");
             }else {
                 console.log("error linea 172");
             }
@@ -185,6 +186,7 @@ module.exports.marker_map = function(from, to, map){
 				    console.log('error al actualizar', err);
 				} else {
 				    placeChanged('from', result);
+				    console.log("actualiza addresses");
 				}
             }
           );
