@@ -170,7 +170,7 @@ module.exports.marker_map = function(from, to, map){
                 document.getElementById("misearch").click();
           });
           */
-
+          plan.from_ll = {"lat": result.lat , "lng":result.lng};
           plan.setAddresses(
             result.lng + "," + result.lat, // from longitud, latitud
             datafromto.to, // to
