@@ -164,8 +164,6 @@ module.exports.marker_map = function(from, to, map){
        var plan = session.plan();
         var tosplit = datafromto.to.split(",");
 
-             //plan.set({"from": {"lat": result.lat , "lng":result.lng}});
-
             plan.setAddress('from', result.lng + ',' + result.lat, function(err, rees) {
                 plan.updateRoutes();
                 console.log("ejecuta reverse ->", rees);
@@ -175,67 +173,30 @@ module.exports.marker_map = function(from, to, map){
 
           var newquery = plan.generateQueryAmigo({"lat": result.lat , "lng":result.lng});
 
-        /*
-          plan.setAddresses(
-            result.lng + "," + result.lat, // from longitud, latitud
-            datafromto.to, // to
-            function (err, res) {
-                 if (err) {
-				    console.log('error al actualizar', err);
-				} else {
-
-                    plan.updateRoutes();
-				    //document.getElementById("misearch").click();
-
-				}
-            }
-          );
-        */
-        /*
-       plan.setAddresses(
-            result.lng + "," + result.lat, // from longitud, latitud
-            datafromto.to, // to
-            function (err, res) {
-                 if (err) {
-				    console.log('error al actualizar', err);
-				} else {
-				    placeChanged('from', result);
-				    console.log("actualiza addresses");
-				}
-            }
-          );
-        */
         console.log("Result ->", result.lng + "," + result.lat);
         console.log("datafromto  ->", datafromto);
-       //plan.updateRoutes();
+
     });
 
     markerto.on('dragend', function(e){
-        var marker = e.target;
-        var result = marker.getLatLng();
-        _this.cleanPolyline();
-        var datafromto = JSON.parse(localStorage.getItem('datafromto'));
-        /*
-       _this.call_plan.setAddresses(
-            datafromto.from, // from longitud, latitud
-            result.lng + "," + result.lat, // to
-            function (err, res) {
-                 _this.call_plan.updateRoutes();
-            }
-          );
-        */
+           var marker = e.target;
+       var result = marker.getLatLng();
+       _this.cleanPolyline();
+       var datafromto = JSON.parse(localStorage.getItem('datafromto'));
+       var plan = session.plan();
+        var tosplit = datafromto.to.split(",");
 
-        _this.call_plan.setAddress(
-            "to",
-            result.lng + "," + result.lat,
-            function (err, res) {
-                 _this.call_plan.updateRoutes();
-            }
-        );
-        console.log("Result ->", result.lng + "," + result.lat);
-        console.log("datafromto  ->", datafromto);
+            plan.setAddress('to', result.lng + ',' + result.lat, function(err, rees) {
+                plan.updateRoutes();
+                console.log("ejecuta reverse to ->", rees);
+                console.log("este es plan to ->", plan);
+          });
 
-       _this.call_plan.updateRoutes();
+
+          var newquery = plan.generateQueryAmigo({"lat": result.lat , "lng":result.lng});
+
+        console.log("Result to ->", result.lng + "," + result.lat);
+        console.log("datafromto to ->", datafromto);
 
     });
 
