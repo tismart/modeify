@@ -161,7 +161,7 @@ module.exports.marker_map = function(from, to, map){
        _this.cleanPolyline();
        var datafromto = JSON.parse(localStorage.getItem('datafromto'));
          var plan = session.plan();
-        /*
+
        var placeChanged = debounce(function(name, coordinate) {
        //var plan = _this.call_plan;
        var plan = session.plan();
@@ -173,7 +173,7 @@ module.exports.marker_map = function(from, to, map){
           });
         }, 150, true);
 
-        */
+
         //placeChanged('from', result);
         console.log("si debounce");
 
@@ -184,10 +184,12 @@ module.exports.marker_map = function(from, to, map){
                  if (err) {
 				    console.log('error al actualizar', err);
 				} else {
-				    plan.updateRoutes();
+				    placeChanged('from', result);
 				}
             }
           );
+
+       plan.loading(true);
 
         console.log("Result ->", result.lng + "," + result.lat);
         console.log("datafromto  ->", datafromto);
