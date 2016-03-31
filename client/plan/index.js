@@ -374,8 +374,8 @@ Plan.prototype.generateQuery = function() {
 Plan.prototype.generateQueryAmigo = function(afrom) {
   var from = afrom;
   var to = this.to_ll() || {};//ato;
-  console.log("query from ->", from);
-  console.log("query to ->", to);
+  console.log("query from amigo->", from);
+  console.log("query to amigo ->", to);
   // Transit modes
   var modes = [];//['WALK'];
 
