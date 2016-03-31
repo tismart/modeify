@@ -166,28 +166,11 @@ module.exports.marker_map = function(from, to, map){
        //var plan = _this.call_plan;
         console.log("to split ->", tosplit);
 
-            plan.journey({
-                  places: [
-                    {
-                      place_id: 'from',
-                      place_lat: result.lat,
-                      place_lon: result.lng,
-                      place_name: 'From'
-                   },
-                    {
-                      place_id: 'to',
-                      place_lat: tosplit[0].trim(),
-                      place_lon: tosplit[1].trim(),
-                      place_name: 'To'
-                    }
-                  ]
-        });
-
        plan.setAddress(name, coordinate.lng + ',' + coordinate.lat, function(err, rees) {
                 plan.updateRoutes();
                 console.log("actualiza address");
 
-
+                document.getElementById("misearch").click();
           });
         }, 150, true);
 
