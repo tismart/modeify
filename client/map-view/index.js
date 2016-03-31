@@ -152,6 +152,7 @@ module.exports.marker_map = function(from, to, map){
     var markerform = new L.marker([from[0],from[1]], {icon: IconStart, draggable: true}).bindPopup('From').addTo(map);
     var markerto = new L.marker([to[0],to[1]], {icon: IconEnd, draggable: true}).bindPopup('to').addTo(map);
     var _this = this;
+
     markerform.on('dragend', function(e){
        var marker = e.target;
        var result = marker.getLatLng();
@@ -167,7 +168,7 @@ module.exports.marker_map = function(from, to, map){
 
         console.log("Result ->", result.lng + "," + result.lat);
         console.log("datafromto  ->", datafromto);
-       _this.call_plan.updateRoutes();
+       //_this.call_plan.updateRoutes();
     });
 
     markerto.on('dragend', function(e){
