@@ -381,10 +381,12 @@ function updateMapOnPlanChange(plan, map) {
       try {
 
         if(!(sesion_plan === null)) {
+
+                sesion_plan = sesion_plan.plan;
+
                 var itineraries = sesion_plan.itineraries;
                 localStorage.setItem('datafromto', JSON.stringify({"from" : sesion_plan.from.lon + "," + sesion_plan.from.lat, "to":sesion_plan.to.lon + "," + sesion_plan.to.lat}));
-                console.log("from sesion ->", [sesion_plan.from.lat,sesion_plan.from.lon]);
-                console.log("from sesion ->", [sesion_plan.to.lat,sesion_plan.to.lon]);
+
                 showMapView.marker_map([sesion_plan.from.lat,sesion_plan.from.lon],[sesion_plan.to.lat,sesion_plan.to.lon], map);
 
                 for (i = 0; i < itineraries.length; i++) {
@@ -397,54 +399,6 @@ function updateMapOnPlanChange(plan, map) {
                 }
             }
 
-        /*
-        log('updating data');
-
-        var datajourney = journey;
-        if (!(plan.dataplan === undefined)) {
-            var itineraries = plan.dataplan.itineraries;
-            console.log("numero de iteraciones ->", itineraries.length);
-            console.log("grafica from ->",plan.dataplan.from);
-            console.log("grafica to ->",plan.dataplan.to);
-
-            localStorage.setItem('datafromto', JSON.stringify({"from" : plan.dataplan.from.lon + "," + plan.dataplan.from.lat, "to":plan.dataplan.to.lon + "," + plan.dataplan.to.lat}));
-
-            showMapView.marker_map([plan.dataplan.from.lat,plan.dataplan.from.lon],[plan.dataplan.to.lat,plan.dataplan.to.lon], map);
-            for (i = 0; i < itineraries.length; i++) {
-                for (ii=0; ii < itineraries[i].legs.length; ii++) {
-                  console.log("itineraries[i].legs[ii]", itineraries[i].legs[ii]);
-                  var circle = [itineraries[i].legs[ii].to.lat, itineraries[i].legs[ii].to.lon, itineraries[i].legs[ii].to.name];
-                  console.log("circle", circle);
-                  showMapView.marker_map_point(circle, map);
-                  //
-                  //for (i = 0; i < itineraries[i].legs[ii].steps.length; i++) {
-                  //     var circle2 = [itineraries[i].legs[ii].steps[i].lat, itineraries[i].legs[ii].steps[i].lon, ''];
-                  //     showMapView.marker_map_point(circle2, map);
-                  //}
-                  showMapView.drawRouteAmigo(itineraries[i].legs[ii].legGeometry.points, itineraries[i].legs[ii].mode);
-                }
-            }
-          console.log("entre if ")
-        }else{
-            console.log("ejecuta storage");
-
-            if(!(sesion_plan === null)) {
-                var itineraries = sesion_plan.itineraries;
-                localStorage.setItem('datafromto', JSON.stringify({"from" : sesion_plan.from.lon + "," + sesion_plan.from.lat, "to":sesion_plan.to.lon + "," + sesion_plan.to.lat}));
-                showMapView.marker_map([sesion_plan.from.lat,sesion_plan.from.lon],[sesion_plan.to.lat,sesion_plan.to.lon], map);
-
-                for (i = 0; i < itineraries.length; i++) {
-                    for (ii=0; ii < itineraries[i].legs.length; ii++) {
-                      var circle = [itineraries[i].legs[ii].to.lat, itineraries[i].legs[ii].to.lon, itineraries[i].legs[ii].to.name];
-                      console.log("circle", circle);
-                      showMapView.marker_map_point(circle, map);
-                      showMapView.drawRouteAmigo(itineraries[i].legs[ii].legGeometry.points, itineraries[i].legs[ii].mode);
-                    }
-                }
-            }
-
-        }
-        */
       } catch (e) {
         console.log("entre cath")
 	    map.setView([center[1], center[0]], config.geocode().zoom);

@@ -49,7 +49,6 @@ module.exports = function profile(query, filter, callback) {
 };
 
 module.exports.plan = function (query, callback) {
-    console.log("query otp ->" , query);
     superagent
         .get('/api/otp/plan')
         .query(query)
@@ -65,15 +64,11 @@ module.exports.plan = function (query, callback) {
                         log('<-- profiled %s options', res.body.length);
                         callback(null, {
                             journey: journey,
-            //			    options: data.options
                             options: res.body,
                             plan: res.body.plan
                         });
 
                     }
-
-                    console.log("otp res.body - in->", res.body);
-                    console.log("otp res.body.plan -in->", res.body.plan);
 		        });
             }
 
