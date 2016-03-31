@@ -184,10 +184,10 @@ module.exports.marker_map = function(from, to, map){
         });
 
        plan.setAddress(name, coordinate.lng + ',' + coordinate.lat, function(err, rees) {
-                //plan.updateRoutes();
+                plan.updateRoutes();
                 console.log("actualiza address");
 
-                document.getElementById("misearch").click();
+
           });
         }, 150, true);
 

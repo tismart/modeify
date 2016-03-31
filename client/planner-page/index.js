@@ -375,7 +375,7 @@ function updateMapOnPlanChange(plan, map) {
 
   var sesion_plan = JSON.parse(localStorage.getItem('dataplan'));
 
-  console.log(sesion_plan);
+  console.log("mi sesion de plan ->",sesion_plan);
 
     if (journey && !isMobile) {
       try {
