@@ -191,10 +191,19 @@ Plan.prototype.setAddress = function(name, address, callback, extra) {
         var changes = {};
             if (reverse) {
               var geocode_features = reverse.features;
-              if (isCoordinate)
-                changes[name] = extra.properties.label;
-              else
-                changes[name] = extra.properties.label;
+              changes[name] = "";
+              if (isCoordinate) {
+                if (!(extra.properties === undefined)) {
+                    changes[name] = extra.properties.label;
+                }
+
+              }else {
+                if (!(extra.properties === undefined)) {
+                    changes[name] = extra.properties.label;
+                }
+
+              }
+
 
               changes[name + '_ll'] = {lat: parseFloat(geocode_features[0].geometry.coordinates[1]), lng: parseFloat(geocode_features[0].geometry.coordinates[0])};
               changes[name + '_id'] = geocode_features[0].properties.id;
