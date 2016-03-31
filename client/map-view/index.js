@@ -180,7 +180,7 @@ module.exports.marker_map = function(from, to, map){
 				} else {
 
                     plan.updateRoutes();
-				    document.getElementById("misearch").click();
+				    //document.getElementById("misearch").click();
 
 				}
             }

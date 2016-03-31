@@ -49,6 +49,7 @@ module.exports = function profile(query, filter, callback) {
 };
 
 module.exports.plan = function (query, callback) {
+    console.log("query otp ->" , query);
     superagent
         .get('/api/otp/plan')
         .query(query)
