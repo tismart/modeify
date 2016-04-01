@@ -50,7 +50,6 @@ module.exports = function(ctx, next) {
   var plan = ctx.plan;
   var query = querystring.parse(window.location.search);
 
-   console.log("query string search ->", query);
   // Set up the views
   var views = {
     'filter-view': new FilterView(plan),
@@ -195,7 +194,6 @@ View.prototype.scroll = function(e) {
  */
 
 View.prototype.onsubmit = function(e) {
-  console.log("submit");
   e.preventDefault();
 };
 
@@ -325,7 +323,6 @@ function updateMapOnPlanChange(plan, map) {
 
   plan.on('change journey', function(journey) {
 
-  showMapView.call_plan = plan;
   showMapView.cleanPolyline();
   showMapView.cleanMarker();
 
@@ -339,7 +336,6 @@ function updateMapOnPlanChange(plan, map) {
                 sesion_plan = sesion_plan.plan;
 
                 var itineraries = sesion_plan.itineraries;
-                localStorage.setItem('datafromto', JSON.stringify({"from" : sesion_plan.from.lon + "," + sesion_plan.from.lat, "to":sesion_plan.to.lon + "," + sesion_plan.to.lat}));
 
                 showMapView.marker_map([sesion_plan.from.lat,sesion_plan.from.lon],[sesion_plan.to.lat,sesion_plan.to.lon], map);
 

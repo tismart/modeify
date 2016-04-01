@@ -178,7 +178,6 @@ Plan.prototype.validCoordinates = function() {
 
 Plan.prototype.setAddress = function(name, address, callback, extra) {
   callback = callback || function() {}; // noop callback
-  console.log("les paso un addrees ->", address);
   var plan = this;
   var c = address.split(',');
   var isCoordinate = c.length === 2 && !isNaN(parseFloat(c[0])) && !isNaN(parseFloat(c[1]));
@@ -214,9 +213,7 @@ Plan.prototype.setAddress = function(name, address, callback, extra) {
               changes[name + '_id'] = geocode_features[0].properties.id;
               changes[name + '_valid'] = true;
 
-              console.log("my change ->", changes);
               plan.set(changes);
-              console.log("consulta si plan se edita ->", plan);
               callback(null, reverse);
 
             } else {

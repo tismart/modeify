@@ -1,13 +1,9 @@
 {
   "name": "map-view",
-  "dependencies": {
-    "component/debounce": "*"
-  },
+
   "local": [
     "config",
-    "plan",
-    "session",
-    "otp"
+    "session"
   ],
   "scripts": [
     "index.js",

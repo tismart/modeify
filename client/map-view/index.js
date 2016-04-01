@@ -3,10 +3,7 @@ var mapModule = require('map');
 var plugins = require('./leaflet_plugins');
 var polyUtil = require('./polyline_encoded.js');
 var routeboxer = require('./leaflet_routeboxer.js');
-var Plan = require('plan');
-var debounce = require('debounce');
 var session = require('session');
-var otp = require('otp');
 
 var center = config.geocode().center.split(',').map(parseFloat)
 if (config.map_provider && config.map_provider() !== 'AmigoCloud') {
@@ -91,7 +88,6 @@ module.exports.cleanRoute = function() {
 
 module.exports.polyline_creadas = [];
 module.exports.marker_creadas = [];
-module.exports.call_plan = false;
 
 module.exports.getpolyline_creadas = function () {
   return this.polyline_creadas;
@@ -107,7 +103,6 @@ module.exports.cleanPolyline = function() {
     for (i in polyline_creadas) {
         try {
                 map.removeLayer(polyline_creadas[i]);
-                console.log("elimina el mapa?");
             } catch (e) {
                 console.log("problema al eliminar " + e);
             }
@@ -134,8 +129,6 @@ module.exports.cleanMarker = function() {
 };
 
 module.exports.marker_map = function(from, to, map){
-    console.log("mapa from ->", from);
-    console.log("mapa to ->", to);
      var IconStart = L.icon({
         iconUrl: 'assets/images/graphics/start.svg',
         iconSize: [40, 55],
@@ -157,15 +150,11 @@ module.exports.marker_map = function(from, to, map){
        var marker = e.target;
        var result = marker.getLatLng();
        _this.cleanPolyline();
-       var datafromto = JSON.parse(localStorage.getItem('datafromto'));
        var plan = session.plan();
-        var tosplit = datafromto.to.split(",");
 
-            plan.setAddress('from', result.lng + ',' + result.lat, function(err, rees) {
-                plan.updateRoutes();
-                console.log("ejecuta reverse ->", rees);
-                console.log("este es plan ->", plan);
-          });
+       plan.setAddress('from', result.lng + ',' + result.lat, function(err, rees) {
+            plan.updateRoutes();
+       });
 
     });
 
@@ -173,14 +162,9 @@ module.exports.marker_map = function(from, to, map){
        var marker = e.target;
        var result = marker.getLatLng();
        _this.cleanPolyline();
-       var datafromto = JSON.parse(localStorage.getItem('datafromto'));
        var plan = session.plan();
-        var tosplit = datafromto.to.split(",");
-
             plan.setAddress('to', result.lng + ',' + result.lat, function(err, rees) {
                 plan.updateRoutes();
-                console.log("ejecuta reverse to ->", rees);
-                console.log("este es plan to ->", plan);
           });
 
     });
@@ -250,8 +234,6 @@ module.exports.drawRouteAmigo = function(legs,mode) {
 
       route = new L.Polyline(L.PolylineUtil.decode(route, 5), color_options);
       this.polyline_creadas.push(route);
-        console.log("pintamos datos ->", this.polyline_creadas);
-        //module.exports.polyline_creadas.push(route);
       var boxes = L.RouteBoxer.box(route, 5);
       var bounds = new L.LatLngBounds([]);
       var boxpolys = new Array(boxes.length);
