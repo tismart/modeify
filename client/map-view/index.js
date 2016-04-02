@@ -209,10 +209,24 @@ module.exports.marker_map_point = function(to, map){
       L.marker([to[0], to[1]], {icon: IconEnd}).bindLabel(name)
     ];
 
-    var layer = L.layerGroup(markers).addTo(map).eachLayer(function(layer){layer.showLabel()});
+    console.log(markers)
 
+//    var collisionLayer = L.LayerGroup.collision({margin:5});
+//
+//
+//		for (var i=0; i<markers.length; i++) {
+//
+//			var feat = cities.features[i];
+//			var labelClass = 'city-label city-label-' + feat.properties.scalerank;
+//			var marker = L.marker(L.GeoJSON.coordsToLatLng(feat.geometry.coordinates), {});
+//			collisionLayer.addLayer(marker);
+//		}
+//		collisionLayer.addTo(map);
+
+
+
+    var layer = L.layerGroup(markers).addTo(map).eachLayer(function(layer){layer.showLabel()});
     this.makerpoint_creadas.push(layer);
-    //this.polyline_creadas.push(circle);
 };
 
 
