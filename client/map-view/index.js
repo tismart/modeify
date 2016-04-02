@@ -214,32 +214,19 @@ module.exports.marker_map_point = function(to, map){
 //    var collisionLayer = L.LayerGroup.collision({margin:5});
 //
 //
-//		for (var i=0; i<cities.features.length; i++) {
+//		for (var i=0; i<markers.length; i++) {
 //
 //			var feat = cities.features[i];
 //			var labelClass = 'city-label city-label-' + feat.properties.scalerank;
-//
-//// 			Note that the markers are not interactive because MSIE on a WinPhone will take *ages*
-//// 			to run addEventListener() on them.
-//
-//			var marker = L.marker(L.GeoJSON.coordsToLatLng(feat.geometry.coordinates), {
-//				icon: L.divIcon({
-//					html:
-//						"<span class='" + labelClass + "'>" +
-//						feat.properties.name +
-//						"</span>"
-//				})
-//				,interactive: false	// Post-0.7.3
-//				,clickable:   false	//      0.7.3
-//				});
+//			var marker = L.marker(L.GeoJSON.coordsToLatLng(feat.geometry.coordinates), {});
 //			collisionLayer.addLayer(marker);
 //		}
 //		collisionLayer.addTo(map);
 
-    var layer = L.layerGroup(markers).addTo(map).eachLayer(function(layer){layer.showLabel()});
 
+
+    var layer = L.layerGroup(markers).addTo(map).eachLayer(function(layer){layer.showLabel()});
     this.makerpoint_creadas.push(layer);
-    //this.polyline_creadas.push(circle);
 };
 
 
