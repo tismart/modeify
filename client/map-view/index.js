@@ -209,6 +209,33 @@ module.exports.marker_map_point = function(to, map){
       L.marker([to[0], to[1]], {icon: IconEnd}).bindLabel(name)
     ];
 
+    console.log(markers)
+
+//    var collisionLayer = L.LayerGroup.collision({margin:5});
+//
+//
+//		for (var i=0; i<cities.features.length; i++) {
+//
+//			var feat = cities.features[i];
+//			var labelClass = 'city-label city-label-' + feat.properties.scalerank;
+//
+//// 			Note that the markers are not interactive because MSIE on a WinPhone will take *ages*
+//// 			to run addEventListener() on them.
+//
+//			var marker = L.marker(L.GeoJSON.coordsToLatLng(feat.geometry.coordinates), {
+//				icon: L.divIcon({
+//					html:
+//						"<span class='" + labelClass + "'>" +
+//						feat.properties.name +
+//						"</span>"
+//				})
+//				,interactive: false	// Post-0.7.3
+//				,clickable:   false	//      0.7.3
+//				});
+//			collisionLayer.addLayer(marker);
+//		}
+//		collisionLayer.addTo(map);
+
     var layer = L.layerGroup(markers).addTo(map).eachLayer(function(layer){layer.showLabel()});
 
     this.makerpoint_creadas.push(layer);
