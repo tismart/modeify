@@ -334,7 +334,7 @@ function updateMapOnPlanChange(plan, map) {
   showMapView.cleanMarkerpoint();
 
   var sesion_plan = JSON.parse(localStorage.getItem('dataplan'));
-
+  console.log("sesion_plan ->", sesion_plan);
     if (journey && !isMobile) {
       try {
 
