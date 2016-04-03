@@ -340,7 +340,7 @@ function updateMapOnPlanChange(plan, map) {
         if(!(session_current === null)) {
 
                 var session_plan = session_current.plan;
-                console.log("session_plan ->", session_plan);
+                console.log("session_current ->", session_current);
                 var itineraries = session_plan.itineraries;
 
                 showMapView.marker_map(
