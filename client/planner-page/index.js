@@ -359,6 +359,26 @@ function updateMapOnPlanChange(plan, map) {
                 var lat_center_polyline = (sesion_plan.from.lat + sesion_plan.to.lat) / 2;
                 var lon_center_polyline = (sesion_plan.from.lon + sesion_plan.to.lon) / 2;
                 map.setView([lat_center_polyline, lon_center_polyline], 11);
+
+
+                for (var k = 0; k < patterns.length; k++) {
+                  var route_id = patterns[k].routeId;
+                  var route_id_split = route_id.split(":");
+                  var agency = route_id_split[0].toLowerCase();
+                  var line = route_id_split[1].toLowerCase();
+                  var routeId = route_id_split[0] + ':' + route_id_split[1];
+                  console.log("agency ->", agency, "line ->", line, "routeId ->", routeId);
+
+                }
+
+                for (var n = 0; n < routes.length; n++) {
+                  var route_short_name = routes[n].shortName;
+                  var route_long_name = routes[n].longName.toUpperCase();
+                  console.log("route_short_name ->", route_short_name, "route_long_name ->", route_long_name);
+
+                }
+
+
             }
 
       } catch (e) {
