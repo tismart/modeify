@@ -355,6 +355,16 @@ function updateMapOnPlanChange(plan, map) {
                     }
                 }
 
+                for (var i = 0; i < itineraries.length; i++) {
+                    for (var j=0; j < itineraries[i].legs.length; j++) {
+                        var steps = itineraries[i].legs[j].to;
+                        console.log("stopId ->", steps.stopId, "stopCode ->", steps.stopCode,
+                                    "stopIndex ->", steps.stopIndex, "stopSequence", steps.stopSequence,
+                                    "name ->", steps.name);
+                    }
+                    console.log("-----------------");
+                }
+
 
                 var patterns = session_current.patterns;
                 for (var k = 0; k < patterns.length; k++) {
