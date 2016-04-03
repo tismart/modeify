@@ -361,6 +361,7 @@ function updateMapOnPlanChange(plan, map) {
                 map.setView([lat_center_polyline, lon_center_polyline], 11);
 
                 var patterns = sesion_plan.patterns;
+                console.log("patterns ->", patterns);
                 for (var k = 0; k < patterns.length; k++) {
                   console.log("entro1");
                   var route_id = patterns[k].routeId;
@@ -372,6 +373,7 @@ function updateMapOnPlanChange(plan, map) {
 
                 }
                 var routes = sesion_plan.routes;
+                console.log("routes ->", routes);
                 for (var n = 0; n < routes.length; n++) {
                  console.log("entro2");
                   var route_short_name = routes[n].shortName;
@@ -379,6 +381,10 @@ function updateMapOnPlanChange(plan, map) {
                   console.log("route_short_name ->", route_short_name, "route_long_name ->", route_long_name);
 
                 }
+
+                var lat_center_polyline = (sesion_plan.from.lat + sesion_plan.to.lat) / 2;
+                var lon_center_polyline = (sesion_plan.from.lon + sesion_plan.to.lon) / 2;
+                map.setView([lat_center_polyline, lon_center_polyline], 11);
 
 
             }
