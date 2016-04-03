@@ -360,7 +360,7 @@ function updateMapOnPlanChange(plan, map) {
                 var lon_center_polyline = (sesion_plan.from.lon + sesion_plan.to.lon) / 2;
                 map.setView([lat_center_polyline, lon_center_polyline], 11);
 
-
+                var patterns = sesion_plan.patterns;
                 for (var k = 0; k < patterns.length; k++) {
                   var route_id = patterns[k].routeId;
                   var route_id_split = route_id.split(":");
@@ -370,7 +370,7 @@ function updateMapOnPlanChange(plan, map) {
                   console.log("agency ->", agency, "line ->", line, "routeId ->", routeId);
 
                 }
-
+                var routes = sesion_plan.routes;
                 for (var n = 0; n < routes.length; n++) {
                   var route_short_name = routes[n].shortName;
                   var route_long_name = routes[n].longName.toUpperCase();
