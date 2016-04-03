@@ -209,7 +209,7 @@ module.exports.marker_map_point = function(to, map){
       L.marker([to[0], to[1]], {icon: IconEnd}).bindLabel(name)
     ];
 
-    console.log(markers)
+    //console.log(markers)
 
 //    var collisionLayer = L.LayerGroup.collision({margin:5});
 //

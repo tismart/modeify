@@ -362,6 +362,7 @@ function updateMapOnPlanChange(plan, map) {
 
                 var patterns = sesion_plan.patterns;
                 for (var k = 0; k < patterns.length; k++) {
+                  console.log("entro1");
                   var route_id = patterns[k].routeId;
                   var route_id_split = route_id.split(":");
                   var agency = route_id_split[0].toLowerCase();
@@ -372,6 +373,7 @@ function updateMapOnPlanChange(plan, map) {
                 }
                 var routes = sesion_plan.routes;
                 for (var n = 0; n < routes.length; n++) {
+                 console.log("entro2");
                   var route_short_name = routes[n].shortName;
                   var route_long_name = routes[n].longName.toUpperCase();
                   console.log("route_short_name ->", route_short_name, "route_long_name ->", route_long_name);
