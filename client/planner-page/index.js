@@ -333,31 +333,29 @@ function updateMapOnPlanChange(plan, map) {
   showMapView.cleanMarker();
   showMapView.cleanMarkerpoint();
 
-  var sesion_plan = JSON.parse(localStorage.getItem('dataplan'));
-  console.log("sesion_plan ->", sesion_plan);
+  var session_current = JSON.parse(localStorage.getItem('dataplan'));
+
     if (journey && !isMobile) {
       try {
+        if(!(session_current === null)) {
 
-        if(!(sesion_plan === null)) {
-
-                sesion_plan = sesion_plan.plan;
-
-                var itineraries = sesion_plan.itineraries;
+                var session_plan = session_current.plan;
+                var itineraries = session_plan.itineraries;
 
                 showMapView.marker_map(
-                        [sesion_plan.from.lat,sesion_plan.from.lon],
-                        [sesion_plan.to.lat,sesion_plan.to.lon]
+                        [session_plan.from.lat,session_plan.from.lon],
+                        [session_plan.to.lat,session_plan.to.lon]
                 );
 
-                for (i = 0; i < itineraries.length; i++) {
-                    for (ii=0; ii < itineraries[i].legs.length; ii++) {
+                for (var i = 0; i < itineraries.length; i++) {
+                    for (var j=0; j < itineraries[i].legs.length; j++) {
 
-                      showMapView.drawRouteAmigo(itineraries[i].legs[ii], itineraries[i].legs[ii].mode);
+                      showMapView.drawRouteAmigo(itineraries[i].legs[j], itineraries[i].legs[j].mode);
                     }
                 }
 
 
-                var patterns = sesion_plan.patterns;
+                var patterns = session_current.patterns;
                 console.log("patterns ->", patterns);
                 for (var k = 0; k < patterns.length; k++) {
                   console.log("entro1");
@@ -369,7 +367,7 @@ function updateMapOnPlanChange(plan, map) {
                   console.log("agency ->", agency, "line ->", line, "routeId ->", routeId);
 
                 }
-                var routes = sesion_plan.routes;
+                var routes = session_current.routes;
                 console.log("routes ->", routes);
                 for (var n = 0; n < routes.length; n++) {
                  console.log("entro2");
@@ -379,8 +377,8 @@ function updateMapOnPlanChange(plan, map) {
 
                 }
 
-                var lat_center_polyline = (sesion_plan.from.lat + sesion_plan.to.lat) / 2;
-                var lon_center_polyline = (sesion_plan.from.lon + sesion_plan.to.lon) / 2;
+                var lat_center_polyline = (session_plan.from.lat + session_plan.to.lat) / 2;
+                var lon_center_polyline = (session_plan.from.lon + session_plan.to.lon) / 2;
                 map.setView([lat_center_polyline, lon_center_polyline], 11);
 
 
