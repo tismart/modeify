@@ -205,28 +205,18 @@ module.exports.marker_map_point = function(to, map){
         iconAnchor: [0, 0],
         popupAnchor:  [-3, -76]
     });
-    var markers = [
-      L.marker([to[0], to[1]], {icon: IconEnd}).bindLabel(name)
-    ];
-
-    //console.log(markers)
-
-//    var collisionLayer = L.LayerGroup.collision({margin:5});
-//
-//
-//		for (var i=0; i<markers.length; i++) {
-//
-//			var feat = cities.features[i];
-//			var labelClass = 'city-label city-label-' + feat.properties.scalerank;
-//			var marker = L.marker(L.GeoJSON.coordsToLatLng(feat.geometry.coordinates), {});
-//			collisionLayer.addLayer(marker);
-//		}
-//		collisionLayer.addTo(map);
+    //var markers = [
+    //  L.marker([to[0], to[1]], {icon: IconEnd}).bindLabel(name)
+    //];
+    //
+    var markers = L.markerClusterGroup();
+    var marker= [L.marker([to[0], to[1]], {icon: IconEnd}).bindLabel(name)];
+    markers.addLayer(marker);
+    map.addLayer(markers);
 
 
-
-    var layer = L.layerGroup(markers).addTo(map).eachLayer(function(layer){layer.showLabel()});
-    this.makerpoint_creadas.push(layer);
+    //var layer = L.layerGroup(markers).addTo(map).eachLayer(function(layer){layer.showLabel()});
+    //this.makerpoint_creadas.push(layer);
 };
 
 
