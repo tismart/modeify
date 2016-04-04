@@ -295,7 +295,7 @@ module.exports.drawRouteAmigo = function(legs,mode, option) {
            color_options.className_value = 'message_';
        }
 
-
+        console.log("color_options", color_options)
 
       route = new L.Polyline(L.PolylineUtil.decode(route, 5), color_options);
       this.polyline_creadas.push(route);
