@@ -20,8 +20,6 @@ var showWelcomeWizard = require('welcome-flow');
 var showPlannerWalkthrough = require('planner-walkthrough');
 var geocode = require('geocode');
 
-var leaflet_cluster = require('./../map-view/leaflet_label/leaflet.markercluster-src.js');
-
 
 var FROM = config.geocode().start_address;
 var TO = config.geocode().end_address;
@@ -360,20 +358,7 @@ function updateMapOnPlanChange(plan, map) {
                 var lon_center_polyline = (session_plan.from.lon + session_plan.to.lon) / 2;
                 map.setView([lat_center_polyline, lon_center_polyline], 11);
 
-                var markers = L.markerClusterGroup();
-
-                for (var i = 0; i < ls.length; i++) {
-                    var a = ls[i].to;
-                    var lat = a.lat;
-                    var lon = a.lat;
-                    var title = a.name;
-                    var marker = L.marker(L.latLng(lat, lon), { title: title });
-                    marker.bindPopup(title);
-                    markers.addLayer(marker);
-                    console.log("markers", markers);
-                }
-
-                map.addLayer(markers);
+                showMapView.marker_map_point2(ls, map);
 
 
                 for (var i = 0; i < itineraries.length; i++) {

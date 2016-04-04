@@ -224,6 +224,23 @@ module.exports.marker_map_point = function(to, map){
     //this.makerpoint_creadas.push(layer);
 };
 
+module.exports.marker_map_point2 = function(ls, map){
+
+    var markers = L.markerClusterGroup();
+
+    for (var i = 0; i < ls.length; i++) {
+        var a = ls[i].to;
+        var lat = a.lat;
+        var lon = a.lat;
+        var title = a.name;
+        var marker = L.marker(L.latLng(lat, lon), { title: title });
+        marker.bindPopup(title);
+        markers.addLayer(marker);
+        console.log("markers", markers);
+    }
+
+    map.addLayer(markers);
+};
 
 
 module.exports.drawRouteAmigo = function(legs,mode) {
