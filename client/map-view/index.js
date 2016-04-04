@@ -234,10 +234,10 @@ module.exports.drawRouteAmigo = function(legs,mode, option) {
     var route = legs.legGeometry.points;
     var circle_from = [legs.from.lat, legs.from.lon, legs.from.name];
     var circle_to = [legs.to.lat, legs.to.lon, legs.to.name];
-    if (!color){
+    if (!color_exists){
         var color_value = '#000';
     }
-    if (!opacity){
+    if (!opacity_exists){
         var opacity_value = '1';
     }
 
@@ -295,7 +295,7 @@ module.exports.drawRouteAmigo = function(legs,mode, option) {
            color_options.className_value = 'message_';
        }
 
-        console.log("color_options", color_options)
+        console.log("color_options", color_options);
 
       route = new L.Polyline(L.PolylineUtil.decode(route, 5), color_options);
       this.polyline_creadas.push(route);
