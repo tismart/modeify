@@ -240,7 +240,7 @@ module.exports.marker_map_point2 = function(ls, map){
         console.log("markers", markers);
     }
 
-    map.addLayer(markers);
+    L.layerGroup(markers).addTo(map);
 };
 
 
