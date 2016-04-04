@@ -223,8 +223,6 @@ module.exports.marker_map_point = function(to, map){
 
 module.exports.drawRouteAmigo = function(legs,mode) {
 
-    this.makerpoint_creadas = L.LayerGroup.collision({margin:5});
-    console.log("Modo de transporte ->", mode);
     var route = legs.legGeometry.points;
     var circle_from = [legs.from.lat, legs.from.lon, legs.from.name];
     var circle_to = [legs.to.lat, legs.to.lon, legs.to.name];
