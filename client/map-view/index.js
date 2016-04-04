@@ -4,6 +4,7 @@ var plugins = require('./leaflet_plugins');
 var polyUtil = require('./polyline_encoded.js');
 var routeboxer = require('./leaflet_routeboxer.js');
 var leaflet_label = require('./leaflet_label/leaflet.label-src.js');
+var collision = require('./leaflet_layergroup_collision.js');
 var session = require('session');
 
 var center = config.geocode().center.split(',').map(parseFloat)
@@ -89,7 +90,7 @@ module.exports.cleanRoute = function() {
 
 module.exports.polyline_creadas = [];
 module.exports.marker_creadas = [];
-module.exports.makerpoint_creadas = [];
+module.exports.makerpoint_creadas;
 
 module.exports.getpolyline_creadas = function () {
   return this.polyline_creadas;
@@ -222,6 +223,9 @@ module.exports.marker_map_point = function(to, map){
 
 
 module.exports.drawRouteAmigo = function(legs,mode) {
+
+    this.makerpoint_creadas = L.LayerGroup.collision({margin:5});
+    console.log("Modo de transporte ->", mode);
     var route = legs.legGeometry.points;
     var circle_from = [legs.from.lat, legs.from.lon, legs.from.name];
     var circle_to = [legs.to.lat, legs.to.lon, legs.to.name];
@@ -236,11 +240,16 @@ module.exports.drawRouteAmigo = function(legs,mode) {
 
         }else if(mode=="BICYCLE") {
             color = '#FF0000';
+            if(!(legs.routeColor === undefined)) {
+                color = "#"+legs.routeColor;
+             }
             dasharray= '6';
             weight = 3;
 
         }else if(mode=="SUBWAY" || mode=="RAIL") {
-            color = '#FF0000';
+             if(!(legs.routeColor === undefined)) {
+                color = "#"+legs.routeColor;
+             }
              weight = 8;
              this.marker_map_point(circle_from, this.activeMap);
              this.marker_map_point(circle_to, this.activeMap);
@@ -251,9 +260,13 @@ module.exports.drawRouteAmigo = function(legs,mode) {
             dasharray= '6';
              weight = 3;
         }
+
         else if(mode=="BUS") {
-            color = '#FEF0B5';
-             weight = 8;
+            //color = '#FEF0B5';
+            if(!(legs.routeColor === undefined)) {
+                color = "#"+legs.routeColor;
+             }
+             weight = 5;
              this.marker_map_point(circle_from, this.activeMap);
              this.marker_map_point(circle_to, this.activeMap);
         }
@@ -279,6 +292,7 @@ module.exports.drawRouteAmigo = function(legs,mode) {
       }*/
 
       route.addTo(this.activeMap);
+      this.makerpoint_creadas.addTo(this.activeMap);
       //this.activeMap.fitBounds(bounds);
 };
 
