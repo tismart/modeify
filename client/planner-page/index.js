@@ -353,12 +353,13 @@ function updateMapOnPlanChange(plan, map) {
                       showMapView.drawRouteAmigo(itineraries[i].legs[j], itineraries[i].legs[j].mode);
                     }
                 }
+                showMapView.marker_map_point2(ls, map);
 
                 var lat_center_polyline = (session_plan.from.lat + session_plan.to.lat) / 2;
                 var lon_center_polyline = (session_plan.from.lon + session_plan.to.lon) / 2;
                 map.setView([lat_center_polyline, lon_center_polyline], 11);
 
-                showMapView.marker_map_point2(ls, map);
+
 
 
                 for (var i = 0; i < itineraries.length; i++) {
