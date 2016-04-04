@@ -227,14 +227,18 @@ module.exports.marker_map_point = function(to, map){
 module.exports.marker_map_point2 = function(ls, map){
 
     var markers = L.markerClusterGroup();
-
+    var IconEnd = L.icon({
+        iconUrl: 'assets/images/graphics/icono.png',
+        iconSize: [20, 20],
+        iconAnchor: [0, 0],
+        popupAnchor:  [-3, -76]
+    });
     for (var i = 0; i < ls.length; i++) {
         var a = ls[i].to;
         var lat = a.lat;
         var lon = a.lat;
         var title = a.name;
-        var marker = L.marker(L.latLng(lat, lon), { title: title });
-        marker.bindPopup(title);
+        var marker = L.marker([lat, lon], {icon: IconEnd}).bindLabel(title);
         markers.addLayer(marker);
 
     }
