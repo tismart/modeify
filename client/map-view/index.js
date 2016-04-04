@@ -242,8 +242,9 @@ module.exports.marker_map_point2 = function(ls, map){
         markers.addLayer(marker);
 
     }
-    L.layerGroup(markers).addTo(map);
-
+   	map.addLayer(markers);
+    var group = new L.featureGroup(markers);
+    map.fitBounds(group.getBounds());
 
 };
 
