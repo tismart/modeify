@@ -354,13 +354,14 @@ function updateMapOnPlanChange(plan, map) {
                     }
                 }
 
-                console.log("LS ->", ls);
+                var lat_center_polyline = (session_plan.from.lat + session_plan.to.lat) / 2;
+                var lon_center_polyline = (session_plan.from.lon + session_plan.to.lon) / 2;
+                map.setView([lat_center_polyline, lon_center_polyline], 11);
 
                 var markers = L.markerClusterGroup();
 
                 for (var i = 0; i < ls.length; i++) {
                     var a = ls[i].to;
-                    console.log("a->", a)
                     var lat = a.lat;
                     var lon = a.lat;
                     var title = a.name;
@@ -401,9 +402,7 @@ function updateMapOnPlanChange(plan, map) {
 
                 }
 
-                var lat_center_polyline = (session_plan.from.lat + session_plan.to.lat) / 2;
-                var lon_center_polyline = (session_plan.from.lon + session_plan.to.lon) / 2;
-                map.setView([lat_center_polyline, lon_center_polyline], 11);
+
 
 
             }
