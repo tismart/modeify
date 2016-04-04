@@ -246,12 +246,12 @@ module.exports.drawRouteAmigo = function(legs,mode, option) {
     var dasharray= '';
 
         if (mode=="CAR") {
-            color = '#9E9E9E';
+            color_value = '#9E9E9E';
             dasharray= '6';
             weight = 3;
 
         }else if(mode=="BICYCLE") {
-            color = '#FF0000';
+            color_value = '#FF0000';
             if(!(legs.routeColor === undefined)) {
                 color = "#"+legs.routeColor;
              }
@@ -260,7 +260,7 @@ module.exports.drawRouteAmigo = function(legs,mode, option) {
 
         }else if(mode=="SUBWAY" || mode=="RAIL") {
              if(!(legs.routeColor === undefined)) {
-                color = "#"+legs.routeColor;
+                color_value = "#"+legs.routeColor;
              }
              weight = 8;
              this.marker_map_point(circle_from, this.activeMap);
@@ -268,15 +268,15 @@ module.exports.drawRouteAmigo = function(legs,mode, option) {
 
         }
         else if(mode == "WALK") {
-            color = '#0BC8F4';
+            color_value = '#0BC8F4';
             dasharray= '6';
-             weight = 3;
+            weight = 3;
         }
 
         else if(mode=="BUS") {
             //color = '#FEF0B5';
             if(!(legs.routeColor === undefined)) {
-                color = "#"+legs.routeColor;
+                color_value = "#"+legs.routeColor;
              }
              weight = 5;
              this.marker_map_point(circle_from, this.activeMap);
