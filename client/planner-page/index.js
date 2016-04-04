@@ -368,6 +368,7 @@ function updateMapOnPlanChange(plan, map) {
                     var marker = L.marker(L.latLng(lat, lon), { title: title });
                     marker.bindPopup(title);
                     markers.addLayer(marker);
+                    console.log("markers", markers);
                 }
 
                 map.addLayer(markers);
