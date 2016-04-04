@@ -19,22 +19,32 @@ var showMapView = require('map-view');
 var View = module.exports = view(require('./template.html'), function(view, model) {
 
   mouseenter(view.el, function() {
-    var itineraries = model.plan();
-    var sesion_plan = JSON.parse(localStorage.getItem('dataplan'));
-    sesion_plan = sesion_plan.plan;
+
+    var session_plan = JSON.parse(localStorage.getItem('dataplan'));
+    var option_drawroute = {color_exists:false, opacity_exists:false, classname_exists:false};
+    session_plan = session_plan.plan;
 
     showMapView.cleanPolyline();
     showMapView.cleanMarkerpoint();
 
-    var option_drawroute = {color_exists:false, opacity_exists:false,
-                            classname_exists:true};
-
     console.log("view.el", view.el);
     console.log("model", model);
 
-     for (var i = 0; i < itineraries.legs.length; i++) {
-          showMapView.drawRouteAmigo(itineraries.legs[i], itineraries.legs[i].mode, option_drawroute);
-     }
+     //for (var i = 0; i < itineraries.legs.length; i++) {
+     //     showMapView.drawRouteAmigo(itineraries.legs[i], itineraries.legs[i].mode, option_drawroute);
+     //}
+
+      var my_index = model.index();
+      console.log(" my_index ",  my_index );
+      var itineraries = sesion_plan.itineraries;
+      for (var i = 0; i < itineraries.length; i++) {
+          for (var ii=0; ii < itineraries[i].legs.length; ii++) {
+              if (i != my_index ){
+                option_drawroute = {color_exists:false, opacity_exists:false, classname_exists:true};
+              }
+            showMapView.drawRouteAmigo(itineraries[i].legs[ii], itineraries[i].legs[ii].mode, option_drawroute);
+          }
+      }
 
   });
 
