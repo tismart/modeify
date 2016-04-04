@@ -346,14 +346,11 @@ function updateMapOnPlanChange(plan, map) {
                         [session_plan.to.lat,session_plan.to.lon]
                 );
 
-                var ls = []
                 for (var i = 0; i < itineraries.length; i++) {
                     for (var j=0; j < itineraries[i].legs.length; j++) {
-                      ls.push(itineraries[i].legs[j]);
                       showMapView.drawRouteAmigo(itineraries[i].legs[j], itineraries[i].legs[j].mode);
                     }
                 }
-                showMapView.marker_map_point2(ls, map);
 
                 var lat_center_polyline = (session_plan.from.lat + session_plan.to.lat) / 2;
                 var lon_center_polyline = (session_plan.from.lon + session_plan.to.lon) / 2;

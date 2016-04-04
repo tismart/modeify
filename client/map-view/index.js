@@ -215,38 +215,14 @@ module.exports.marker_map_point = function(to, map){
     var marker = L.marker([to[0], to[1]], {icon: IconEnd}).bindLabel(name);
     markers.addLayer(marker);
 
-    map.addLayer(markers);
-    //console.log("markers ->", markers);
-    //L.layerGroup(markers).addTo(map);
+   //console.log("markers ->", markers);
+   // L.layerGroup(markers).addTo(map);
 
 
-    //var layer = L.layerGroup(markers).addTo(map).eachLayer(function(layer){layer.showLabel()});
-    //this.makerpoint_creadas.push(layer);
+    var layer = L.layerGroup(markers).addTo(map).eachLayer(function(layer){layer.showLabel()});
+    this.makerpoint_creadas.push(layer);
 };
 
-module.exports.marker_map_point2 = function(ls, map){
-
-    var markers = L.markerClusterGroup();
-    var IconEnd = L.icon({
-        iconUrl: 'assets/images/graphics/icono.png',
-        iconSize: [20, 20],
-        iconAnchor: [0, 0],
-        popupAnchor:  [-3, -76]
-    });
-    for (var i = 0; i < ls.length; i++) {
-        var a = ls[i].to;
-        var lat = a.lat;
-        var lon = a.lat;
-        var title = a.name;
-        var marker = L.marker([lat, lon], {icon: IconEnd}).bindLabel(title);
-        markers.addLayer(marker);
-
-    }
-   	map.addLayer(markers);
-    var group = new L.featureGroup(markers);
-    map.fitBounds(group.getBounds());
-
-};
 
 
 module.exports.drawRouteAmigo = function(legs,mode) {
@@ -276,8 +252,8 @@ module.exports.drawRouteAmigo = function(legs,mode) {
                 color = "#"+legs.routeColor;
              }
              weight = 8;
-             //this.marker_map_point(circle_from, this.activeMap);
-             //this.marker_map_point(circle_to, this.activeMap);
+             this.marker_map_point(circle_from, this.activeMap);
+             this.marker_map_point(circle_to, this.activeMap);
 
         }
         else if(mode == "WALK") {
@@ -292,8 +268,8 @@ module.exports.drawRouteAmigo = function(legs,mode) {
                 color = "#"+legs.routeColor;
              }
              weight = 5;
-             //this.marker_map_point(circle_from, this.activeMap);
-             //this.marker_map_point(circle_to, this.activeMap);
+             this.marker_map_point(circle_from, this.activeMap);
+             this.marker_map_point(circle_to, this.activeMap);
         }
 
 
