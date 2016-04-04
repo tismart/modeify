@@ -206,20 +206,20 @@ module.exports.marker_map_point = function(to, map){
         iconAnchor: [0, 0],
         popupAnchor:  [-3, -76]
     });
-    //var markers = [
-    //  L.marker([to[0], to[1]], {icon: IconEnd}).bindLabel(name)
-    //];
+    var marker = [
+      L.marker([to[0], to[1]], {icon: IconEnd}).bindLabel(name)
+    ];
     //
-    var markers = L.markerClusterGroup();
-    //var marker= [L.marker([to[0], to[1]], {icon: IconEnd}).bindLabel(name)];
-    var marker = L.marker([to[0], to[1]], {icon: IconEnd}).bindLabel(name, { noHide: true });
-    markers.addLayer(marker);
+    //var markers = L.markerClusterGroup();
+    ////var marker= [L.marker([to[0], to[1]], {icon: IconEnd}).bindLabel(name)];
+    //var marker = L.marker([to[0], to[1]], {icon: IconEnd}).bindLabel(name, { noHide: true });
+    //markers.addLayer(marker);
 
    //console.log("markers ->", markers);
-    map.addLayer(markers);
+   // map.addLayer(markers);
 
-    //var layer = L.layerGroup(marker).addTo(map).eachLayer(function(layer){layer.showLabel()});
-    //this.makerpoint_creadas.push(layer);
+    var layer = L.layerGroup(marker).addTo(map).eachLayer(function(layer){layer.showLabel()});
+    this.makerpoint_creadas.push(layer);
 };
 
 
