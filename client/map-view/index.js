@@ -286,7 +286,6 @@ module.exports.drawRouteAmigo = function(legs,mode, option) {
 
        var color_options = {
             color: color_value,
-            opacity: opacity_value,
             weight: weight,
             dashArray: dasharray
         };
