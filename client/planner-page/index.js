@@ -346,9 +346,11 @@ function updateMapOnPlanChange(plan, map) {
                         [session_plan.to.lat,session_plan.to.lon]
                 );
 
+                var option_drawroute = {color_exists:false, opacity_exists:false};
+
                 for (var i = 0; i < itineraries.length; i++) {
                     for (var j=0; j < itineraries[i].legs.length; j++) {
-                      showMapView.drawRouteAmigo(itineraries[i].legs[j], itineraries[i].legs[j].mode);
+                      showMapView.drawRouteAmigo(itineraries[i].legs[j], itineraries[i].legs[j].mode, option_drawroute);
                     }
                 }
 

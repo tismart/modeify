@@ -224,12 +224,24 @@ module.exports.marker_map_point = function(to, map){
 
 
 
-module.exports.drawRouteAmigo = function(legs,mode) {
+module.exports.drawRouteAmigo = function(legs,mode, option) {
+    /*
+     option = {color_exists:'',color_value:'', opacity_exists:'',opacity_value:''}
+    */
+    var color_exists = option.color;
+    var opacity_exists = option.opacity;
 
     var route = legs.legGeometry.points;
     var circle_from = [legs.from.lat, legs.from.lon, legs.from.name];
     var circle_to = [legs.to.lat, legs.to.lon, legs.to.name];
-    var color = '#000';
+    if (!color){
+        var color_value = '#000';
+    }
+    if (!opacity){
+        var opacity_value = '1';
+    }
+
+
     var weight = 5;
     var dasharray= '';
 
@@ -273,11 +285,17 @@ module.exports.drawRouteAmigo = function(legs,mode) {
 
 
        var color_options = {
-            color: color,
-            opacity: 1,
+            color: color_value,
+            opacity: opacity_value,
             weight: weight,
             dashArray: dasharray
         };
+
+       if (option.class_name){
+           color_options.className_value = 'message_';
+       }
+
+
 
       route = new L.Polyline(L.PolylineUtil.decode(route, 5), color_options);
       this.polyline_creadas.push(route);
