@@ -235,6 +235,7 @@ module.exports.marker_map_point2 = function(ls, map){
         var title = a.name;
         var marker = L.marker(L.latLng(lat, lon), { title: title });
         marker.bindPopup(title);
+        console.log("marker", marker);
         markers.addLayer(marker);
         console.log("markers", markers);
     }
