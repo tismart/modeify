@@ -29,7 +29,8 @@ var View = module.exports = view(require('./template.html'), function(view, mode
     var option_drawroute = {color_exists:false, opacity_exists:false,
                             classname_exists:true};
 
-    console.log(view.el);
+    console.log("view.el", view.el);
+    console.log("model", model);
 
      for (var i = 0; i < itineraries.legs.length; i++) {
           showMapView.drawRouteAmigo(itineraries.legs[i], itineraries.legs[i].mode, option_drawroute);
