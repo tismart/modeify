@@ -24,9 +24,9 @@ var View = module.exports = view(require('./template.html'), function(view, mode
 
     showMapView.cleanPolyline();
     showMapView.cleanMarkerpoint();
-
+    var option_drawroute = {color_exists:false, opacity_exists:false};
      for (var i = 0; i < itineraries.legs.length; i++) {
-          showMapView.drawRouteAmigo(itineraries.legs[i], itineraries.legs[i].mode);
+          showMapView.drawRouteAmigo(itineraries.legs[i], itineraries.legs[i].mode, option_drawroute);
      }
 
   });
