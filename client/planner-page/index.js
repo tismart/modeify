@@ -329,7 +329,7 @@ function updateMapOnPlanChange(plan, map) {
 
   showMapView.cleanPolyline();
   showMapView.cleanMarker();
-  //showMapView.cleanMarkerpoint();
+  showMapView.cleanMarkerpoint();
 
   var session_current = JSON.parse(localStorage.getItem('dataplan'));
 
@@ -353,9 +353,9 @@ function updateMapOnPlanChange(plan, map) {
                       showMapView.drawRouteAmigo(itineraries[i].legs[j], itineraries[i].legs[j].mode, option_drawroute);
                     }
                 }
-
-                var lat_center_polyline = (session_plan.from.lat + session_plan.to.lat) / 2;
-                var lon_center_polyline = (session_plan.from.lon + session_plan.to.lon) / 2;
+                //showMapView.drawMakerCollision();
+                var lat_center_polyline = (sesion_plan.from.lat + sesion_plan.to.lat) / 2;
+                var lon_center_polyline = (sesion_plan.from.lon + sesion_plan.to.lon) / 2;
                 map.setView([lat_center_polyline, lon_center_polyline], 11);
 
 

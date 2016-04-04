@@ -90,8 +90,14 @@ module.exports.cleanRoute = function() {
 
 module.exports.polyline_creadas = [];
 module.exports.marker_creadas = [];
-module.exports.makerpoint_creadas;
+module.exports.makerpoint_creadas = [];
+module.exports.collision_group = {};
+module.exports.marker_collision_group = [];
 
+module.exports.drawMakerCollision = function () {
+  console.log("draw marker" , this.collision_group);
+  this.collision_group.onAdd(this.activeMap);
+};
 module.exports.getpolyline_creadas = function () {
   return this.polyline_creadas;
 };
@@ -206,7 +212,9 @@ module.exports.marker_map_point = function(to, map){
         iconAnchor: [0, 0],
         popupAnchor:  [-3, -76]
     });
-    var marker = [
+
+
+    var markers = [
       L.marker([to[0], to[1]], {icon: IconEnd}).bindLabel(name)
     ];
     //
@@ -215,11 +223,23 @@ module.exports.marker_map_point = function(to, map){
     //var marker = L.marker([to[0], to[1]], {icon: IconEnd}).bindLabel(name, { noHide: true });
     //markers.addLayer(marker);
 
-   //console.log("markers ->", markers);
-   // map.addLayer(markers);
 
-    var layer = L.layerGroup(marker).addTo(map).eachLayer(function(layer){layer.showLabel()});
+    var marker = L.marker([to[0], to[1]], {icon: IconEnd}).bindLabel(name);
+
+    var layer = L.layerGroup(markers).addTo(map).eachLayer(function(layer){layer.showLabel()});
+    //console.log("antes del marker ->", this.collision_group);
+    //this.collision_group.addLayer(marker);
+    //console.log("inserto marker->", marker);
+    //console.log("despues del marker ->", this.collision_group);
+    //console.log("group ->", L.layerGroup(markers));
     this.makerpoint_creadas.push(layer);
+
+    var collision_group = L.layerGroup.collision({margin:5});
+    collision_group.addLayer([marker]);
+      //collision_group.onAdd(this.activeMap);
+    this.collision_group = collision_group;
+    console.log("collision_group -> ",collision_group);
+    //this.marker_collision_group.push(marker);
 };
 
 
@@ -260,9 +280,11 @@ module.exports.drawRouteAmigo = function(legs,mode, option) {
 
         }else if(mode=="SUBWAY" || mode=="RAIL") {
              if(!(legs.routeColor === undefined)) {
-                color_value = "#"+legs.routeColor;
+                color = "#"+legs.routeColor;
              }
              weight = 8;
+             console.log("circle from ->", circle_from);
+             console.log("circle to ->", circle_to);
              this.marker_map_point(circle_from, this.activeMap);
              this.marker_map_point(circle_to, this.activeMap);
 
@@ -276,9 +298,11 @@ module.exports.drawRouteAmigo = function(legs,mode, option) {
         else if(mode=="BUS") {
             //color = '#FEF0B5';
             if(!(legs.routeColor === undefined)) {
-                color_value = "#"+legs.routeColor;
+                color = "#"+legs.routeColor;
              }
              weight = 5;
+             console.log("circle from ->", circle_from);
+             console.log("circle to ->", circle_to);
              this.marker_map_point(circle_from, this.activeMap);
              this.marker_map_point(circle_to, this.activeMap);
         }
@@ -290,25 +314,12 @@ module.exports.drawRouteAmigo = function(legs,mode, option) {
             dashArray: dasharray
         };
 
-        if (option.classname_exists){
-           color_options.className = 'message_';
-       }
-
-        console.log("color_options", color_options);
-
       route = new L.Polyline(L.PolylineUtil.decode(route, 5), color_options);
       this.polyline_creadas.push(route);
       var boxes = L.RouteBoxer.box(route, 5);
-      //var bounds = new L.LatLngBounds([]);
-      //var bounds = [];
       var boxpolys = new Array(boxes.length);
-      /*
-      for (var i = 0; i < boxes.length; i++) {
-        //bounds.extend(boxes[i]);
-        bounds.push(boxes[i]);
-      }*/
-
       route.addTo(this.activeMap);
+      this.makerpoint_creadas.addTo(this.activeMap);
       //this.activeMap.fitBounds(bounds);
 };
 
