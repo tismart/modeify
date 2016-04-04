@@ -20,7 +20,7 @@ var showWelcomeWizard = require('welcome-flow');
 var showPlannerWalkthrough = require('planner-walkthrough');
 var geocode = require('geocode');
 
-var leaflet_cluster = require('./leaflet_label/leaflet.markercluster-src.js');
+var leaflet_cluster = require('./../map-view/leaflet_label/leaflet.markercluster-src.js');
 
 
 var FROM = config.geocode().start_address;
