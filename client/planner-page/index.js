@@ -359,9 +359,12 @@ function updateMapOnPlanChange(plan, map) {
                 var markers = L.markerClusterGroup();
 
                 for (var i = 0; i < ls.length; i++) {
-                    var a = ls[i];
-                    var title = a[2];
-                    var marker = L.marker(L.latLng(a[0], a[1]), { title: title });
+                    var a = ls[i].to;
+                    console.log("a->", a)
+                    var lat = a.lat;
+                    var lon = a.lat;
+                    var title = a.name;
+                    var marker = L.marker(L.latLng(lat, lon), { title: title });
                     marker.bindPopup(title);
                     markers.addLayer(marker);
                 }
