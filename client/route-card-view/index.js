@@ -34,8 +34,8 @@ var View = module.exports = view(require('./template.html'), function(view, mode
      //     showMapView.drawRouteAmigo(itineraries.legs[i], itineraries.legs[i].mode, option_drawroute);
      //}
 
-      var my_index = model.index();
-      console.log(" my_index ",  my_index );
+      var my_index = model.index;
+      console.log(" my_index ",  my_index);
       var itineraries = sesion_plan.itineraries;
       for (var i = 0; i < itineraries.length; i++) {
           for (var ii=0; ii < itineraries[i].legs.length; ii++) {
