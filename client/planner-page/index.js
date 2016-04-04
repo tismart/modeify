@@ -346,12 +346,15 @@ function updateMapOnPlanChange(plan, map) {
                         [session_plan.to.lat,session_plan.to.lon]
                 );
 
+                var ls = []
                 for (var i = 0; i < itineraries.length; i++) {
                     for (var j=0; j < itineraries[i].legs.length; j++) {
-
+                      ls.push(itineraries[i].legs[j]);
                       showMapView.drawRouteAmigo(itineraries[i].legs[j], itineraries[i].legs[j].mode);
                     }
                 }
+
+                console.log("LS ->", ls);
 
                 for (var i = 0; i < itineraries.length; i++) {
                     for (var j=0; j < itineraries[i].legs.length; j++) {
