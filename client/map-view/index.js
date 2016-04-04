@@ -212,14 +212,13 @@ module.exports.marker_map_point = function(to, map){
     //
     var markers = L.markerClusterGroup();
     //var marker= [L.marker([to[0], to[1]], {icon: IconEnd}).bindLabel(name)];
-    var marker = L.marker([to[0], to[1]], {icon: IconEnd}).bindLabel(name);
+    var marker = L.marker([to[0], to[1]], {icon: IconEnd}).bindLabel(name, { noHide: true });
     markers.addLayer(marker);
 
    //console.log("markers ->", markers);
     map.addLayer(markers);
 
-
-    //var layer = L.layerGroup(markers).addTo(map).eachLayer(function(layer){layer.showLabel()});
+    //var layer = L.layerGroup(marker).addTo(map).eachLayer(function(layer){layer.showLabel()});
     //this.makerpoint_creadas.push(layer);
 };
 
