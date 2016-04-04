@@ -215,10 +215,12 @@ module.exports.marker_map_point = function(to, map){
     markers.addLayer(marker);
 
     //map.addLayer(markers);
+    console.log("markers ->", markers);
+    L.addLayer(markers).addTo(map);
 
 
-    var layer = L.layerGroup(markers).addTo(map).eachLayer(function(layer){layer.showLabel()});
-    this.makerpoint_creadas.push(layer);
+    //var layer = L.layerGroup(markers).addTo(map).eachLayer(function(layer){layer.showLabel()});
+    //this.makerpoint_creadas.push(layer);
 };
 
 
