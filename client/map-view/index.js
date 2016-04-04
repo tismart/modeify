@@ -216,7 +216,7 @@ module.exports.marker_map_point = function(to, map){
 
     //map.addLayer(markers);
     console.log("markers ->", markers);
-    L.addLayer(markers).addTo(map);
+    L.layerGroup(markers).addTo(map);
 
 
     //var layer = L.layerGroup(markers).addTo(map).eachLayer(function(layer){layer.showLabel()});
