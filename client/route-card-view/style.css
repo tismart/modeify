@@ -186,6 +186,6 @@
     }
 }
 .message_ {
-    -webkit-animation: fade_jona 3s;
+    -webkit-animation: fade_jona 0.8s;
     -webkit-animation-fill-mode: both;
 }
