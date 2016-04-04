@@ -291,8 +291,8 @@ module.exports.drawRouteAmigo = function(legs,mode, option) {
             dashArray: dasharray
         };
 
-       if (option.class_name){
-           color_options.className_value = 'message_';
+        if (option.classname_exists){
+           color_options.className = 'message_';
        }
 
         console.log("color_options", color_options);

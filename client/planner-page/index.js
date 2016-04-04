@@ -346,7 +346,7 @@ function updateMapOnPlanChange(plan, map) {
                         [session_plan.to.lat,session_plan.to.lon]
                 );
 
-                var option_drawroute = {color_exists:false, opacity_exists:false};
+                var option_drawroute = {color_exists:false, opacity_exists:false, classname_exists:false};
 
                 for (var i = 0; i < itineraries.length; i++) {
                     for (var j=0; j < itineraries[i].legs.length; j++) {
