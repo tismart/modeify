@@ -289,7 +289,6 @@ module.exports.drawRouteAmigo = function(legs,mode) {
       }*/
 
       route.addTo(this.activeMap);
-      this.makerpoint_creadas.addTo(this.activeMap);
       //this.activeMap.fitBounds(bounds);
 };
 
