@@ -228,17 +228,17 @@ module.exports.drawRouteAmigo = function(legs,mode, option) {
     /*
      option = {color_exists:'',color_value:'', opacity_exists:'',opacity_value:''}
     */
-    var color_exists = option.color;
-    var opacity_exists = option.opacity;
+    var color_value = '#000';
+    var opacity_value = '1';
 
     var route = legs.legGeometry.points;
     var circle_from = [legs.from.lat, legs.from.lon, legs.from.name];
     var circle_to = [legs.to.lat, legs.to.lon, legs.to.name];
     if (!color_exists){
-        var color_value = '#000';
+        color_value= option.color;
     }
     if (!opacity_exists){
-        var opacity_value = '1';
+        opacity_value = option.opacity;
     }
 
 
