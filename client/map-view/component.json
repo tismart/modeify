@@ -10,7 +10,7 @@
     "leaflet_routeboxer.js",
     "polyline_encoded.js",
     "leaflet_label/leaflet.label-src.js",
-    "leaflet_label/Leaflet.LayerGroup.Collision.js"
+    "leaflet_label/leaflet.markercluster-src.js"
   ],
   "styles": [
     "style.css",
