@@ -253,8 +253,8 @@ module.exports.drawRouteAmigo = function(legs,mode) {
                 color = "#"+legs.routeColor;
              }
              weight = 8;
-             this.marker_map_point(circle_from, this.activeMap);
-             this.marker_map_point(circle_to, this.activeMap);
+             //this.marker_map_point(circle_from, this.activeMap);
+             //this.marker_map_point(circle_to, this.activeMap);
 
         }
         else if(mode == "WALK") {
@@ -269,8 +269,8 @@ module.exports.drawRouteAmigo = function(legs,mode) {
                 color = "#"+legs.routeColor;
              }
              weight = 5;
-             this.marker_map_point(circle_from, this.activeMap);
-             this.marker_map_point(circle_to, this.activeMap);
+             //this.marker_map_point(circle_from, this.activeMap);
+             //this.marker_map_point(circle_to, this.activeMap);
         }
 
 

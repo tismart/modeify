@@ -356,6 +356,19 @@ function updateMapOnPlanChange(plan, map) {
 
                 console.log("LS ->", ls);
 
+                var markers = L.markerClusterGroup();
+
+                for (var i = 0; i < ls.length; i++) {
+                    var a = ls[i];
+                    var title = a[2];
+                    var marker = L.marker(L.latLng(a[0], a[1]), { title: title });
+                    marker.bindPopup(title);
+                    markers.addLayer(marker);
+                }
+
+                map.addLayer(markers);
+
+
                 for (var i = 0; i < itineraries.length; i++) {
                     for (var j=0; j < itineraries[i].legs.length; j++) {
                         var steps = itineraries[i].legs[j].to;
