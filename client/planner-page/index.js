@@ -339,7 +339,7 @@ function updateMapOnPlanChange(plan, map) {
       try {
 
         if(!(sesion_plan === null)) {
-
+                console.log("data ->", sesion_plan);
                 sesion_plan = sesion_plan.plan;
 
                 var itineraries = sesion_plan.itineraries;
