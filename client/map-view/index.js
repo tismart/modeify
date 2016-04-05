@@ -308,5 +308,6 @@ module.exports.drawRouteAmigo = function(legs,mode) {
       var boxes = L.RouteBoxer.box(route, 5);
       var boxpolys = new Array(boxes.length);
       route.addTo(this.activeMap);
+      console.log("rutas objecto ->", this.polyline_creadas);
 };
 
