@@ -22,7 +22,8 @@ var View = module.exports = view(require('./template.html'), function(view, mode
     console.log("hover model",model);
 
     d3.selectAll(".iteration-"+model.index)
-    .style("opacity", 0)
+    .style("opacity", 1)
+    .transition().duration(400).style("opacity", 0);
     //.transition().duration(400).style("opacity", 0);
     /*
     var itineraries = model.plan();
@@ -40,7 +41,8 @@ var View = module.exports = view(require('./template.html'), function(view, mode
   mouseleave(view.el, function() {
 
    d3.selectAll(".iteration-"+model.index)
-    .style("opacity", 1)
+   .style("opacity", 0)
+   .transition().duration(400).style("opacity", 1);
   /*
     if (!view.el.classList.contains('expanded')) {
 
