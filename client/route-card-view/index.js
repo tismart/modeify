@@ -1,4 +1,5 @@
 var analytics = require('analytics');
+var d3 = require('d3');
 var convert = require('convert');
 var Feedback = require('feedback-modal');
 var mouseenter = require('mouseenter');
