@@ -38,6 +38,9 @@ var View = module.exports = view(require('./template.html'), function(view, mode
   });
 
   mouseleave(view.el, function() {
+
+   d3.selectAll(".iteration-"+model.index)
+    .style("opacity", 1)
   /*
     if (!view.el.classList.contains('expanded')) {
 
