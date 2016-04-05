@@ -241,9 +241,10 @@ module.exports.marker_map_point = function(to, map){
 
 
 
-module.exports.drawRouteAmigo = function(legs,mode) {
+module.exports.drawRouteAmigo = function(legs,mode, iteration) {
 
     var route = legs.legGeometry.points;
+    var classname = "iteration-"+iteration;
     var circle_from = [legs.from.lat, legs.from.lon, legs.from.name];
     var circle_to = [legs.to.lat, legs.to.lon, legs.to.name];
     var color = '#000';
@@ -298,7 +299,8 @@ module.exports.drawRouteAmigo = function(legs,mode) {
             color: color,
             opacity: 1,
             weight: weight,
-            dashArray: dasharray
+            dashArray: dasharray,
+            className:classname
         };
 
       var argpolyline = L.PolylineUtil.decode(route, 5);
