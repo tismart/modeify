@@ -38,6 +38,7 @@ var View = module.exports = view(require('./template.html'), function(view, mode
   });
 
   mouseleave(view.el, function() {
+  /*
     if (!view.el.classList.contains('expanded')) {
 
       var sesion_plan = JSON.parse(localStorage.getItem('dataplan'));
@@ -50,6 +51,7 @@ var View = module.exports = view(require('./template.html'), function(view, mode
       }
 
     }
+  */
   });
 });
 
