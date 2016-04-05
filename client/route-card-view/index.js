@@ -39,7 +39,8 @@ var View = module.exports = view(require('./template.html'), function(view, mode
   });
 
   mouseleave(view.el, function() {
-
+   var itineration = JSON.parse(localStorage.getItem('itineration'));
+   console.log("obj itineration ->", itineration);
    d3.selectAll(".iteration-"+model.index)
    .style("opacity", 0)
    .transition().duration(400).style("opacity", 1);
