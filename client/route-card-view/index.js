@@ -19,11 +19,16 @@ var showMapView = require('map-view');
 
 var View = module.exports = view(require('./template.html'), function(view, model) {
   mouseenter(view.el, function() {
-    console.log("hover model",model);
 
-    d3.selectAll(".iteration-"+model.index)
-    .style("opacity", 1)
-    .transition().duration(400).style("opacity", 0);
+  var itineration = JSON.parse(localStorage.getItem('itineration'));
+  console.log("obj itineration 1 ->", itineration.length);
+  for (var i=0; i<itineration.length;i++) {
+       if (i!=model.index){
+            d3.selectAll(".iteration-"+model.index)
+           .style("opacity", 1)
+           .transition().duration(400).style("opacity", 0);
+       }
+  }
     //.transition().duration(400).style("opacity", 0);
     /*
     var itineraries = model.plan();
@@ -40,10 +45,15 @@ var View = module.exports = view(require('./template.html'), function(view, mode
 
   mouseleave(view.el, function() {
    var itineration = JSON.parse(localStorage.getItem('itineration'));
-   console.log("obj itineration ->", itineration);
-   d3.selectAll(".iteration-"+model.index)
-   .style("opacity", 0)
-   .transition().duration(400).style("opacity", 1);
+   console.log("obj itineration 2->", itineration.length);
+   for (var i=0; i<itineration.length;i++) {
+        if (i!=model.index){
+            d3.selectAll(".iteration-"+model.index)
+           .style("opacity", 0)
+           .transition().duration(400).style("opacity", 1);
+        }
+   }
+
   /*
     if (!view.el.classList.contains('expanded')) {
 
