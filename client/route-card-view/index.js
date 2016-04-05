@@ -20,6 +20,11 @@ var showMapView = require('map-view');
 var View = module.exports = view(require('./template.html'), function(view, model) {
   mouseenter(view.el, function() {
     console.log("hover model",model);
+
+    d3.selectAll(".iteration-"+model.index)
+    .style("opacity", 0)
+    //.transition().duration(400).style("opacity", 0);
+    /*
     var itineraries = model.plan();
     var sesion_plan = JSON.parse(localStorage.getItem('dataplan'));
     sesion_plan = sesion_plan.plan;
@@ -29,7 +34,7 @@ var View = module.exports = view(require('./template.html'), function(view, mode
      for (var i = 0; i < itineraries.legs.length; i++) {
           showMapView.drawRouteAmigo(itineraries.legs[i], itineraries.legs[i].mode);
      }
-
+    */
   });
 
   mouseleave(view.el, function() {
