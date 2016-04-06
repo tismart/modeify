@@ -19,20 +19,16 @@ var showMapView = require('map-view');
 
 var View = module.exports = view(require('./template.html'), function(view, model) {
   mouseenter(view.el, function() {
-
       var itineration = JSON.parse(localStorage.getItem('itineration'));
-
-      console.log("obj itineration 1 ->", itineration.length);
       for (var i=0; i<itineration.length;i++) {
            if (i!=model.index){
                 var rec = d3.selectAll(".iteration-"+i);
-                rec.attr('class', 'iteration-'+i+' legend-fadeout');
-                rec.attr("stroke", "#E0E0E0");
-                //rec.transition().duration(400).style("stroke", "#E0E0E0");
+                rec.attr('class', 'iteration-'+i+' legend-fadeout')
+                //rec.transition().duration(400).style("stroke", "#E0E0E0")
                 //.style("opacity", 1)
                 //.transition().duration(500).style("opacity", 0);
-               //.transition().duration(400).style("stroke", "#E0E0E0");
-               //.style("opacity", 1)
+               .transition().duration(400).style("stroke", "#E0E0E0")
+               .style("opacity", 1)
            }
       }
 
@@ -44,7 +40,6 @@ var View = module.exports = view(require('./template.html'), function(view, mode
   mouseleave(view.el, function() {
 
   var itineration = JSON.parse(localStorage.getItem('itineration'));
-   console.log("obj itineration 2->", itineration.length);
    for (var i=0; i<itineration.length;i++) {
         if (i!=model.index){
              var rec = d3.selectAll(".iteration-"+i);
