@@ -27,7 +27,7 @@ var View = module.exports = view(require('./template.html'), function(view, mode
       for (var i=0; i<itineration.length;i++) {
            if (i!=model.index){
                 var r3 = d3.selectAll(".iteration-"+i);
-                r3.style("stroke", "#E0E0E0").transition().duration(500)
+                r3.transition().duration(500).style("stroke", "#E0E0E0");
            }
       }
 
@@ -36,30 +36,6 @@ var View = module.exports = view(require('./template.html'), function(view, mode
       console.log(Math.random())
 
 
-  /*
-    showMapView.cleanPolyline();
-    showMapView.cleanMarkerpoint();
-    showMapView.cleanMarkerCollision();
-    showMapView.marker_collision_group = [];
-
-    var sesion_plan = JSON.parse(localStorage.getItem('dataplan'));
-    sesion_plan = sesion_plan.plan;
-
-     var index_ = model.index;
-     var stroke;
-     var itineraries = sesion_plan.itineraries;
-      for (var i= 0; i < itineraries.length; i++) {
-          if (i != index_){
-            stroke = {'stroke':true, 'class_name':true}
-          }else{
-            stroke = {'stroke':false, 'class_name':false}
-          }
-          for (var j=0; j < itineraries[i].legs.length; j++) {
-             showMapView.drawRouteAmigo(itineraries[i].legs[j], itineraries[i].legs[j].mode, stroke);
-          }
-      }
-      showMapView.drawMakerCollision();
-    */
   });
 
   mouseleave(view.el, function() {
