@@ -43,9 +43,9 @@ var View = module.exports = view(require('./template.html'), function(view, mode
 
       });
 
-      d3.selectAll(".g-element")[0].sort(function(a,b){
-            if (Boolean(parseInt(d3.select(a).attr("data-show")))) {
-                d3.select(a).node().parentNode.appendChild(a);
+      d3.selectAll(".g-element").each(function(e){
+            if (Boolean(parseInt(d3.select(this).attr("data-show")))) {
+                d3.select(this).node().parentNode.appendChild(this);
             }
 
       });
