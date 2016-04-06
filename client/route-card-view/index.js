@@ -27,6 +27,7 @@ var View = module.exports = view(require('./template.html'), function(view, mode
            if (i!=model.index){
                 var rec = d3.selectAll(".iteration-"+i);
                 rec.attr('class', 'iteration-'+i+' legend-fadeout');
+                rec.attr("stroke", "#E0E0E0");
                 //rec.transition().duration(400).style("stroke", "#E0E0E0");
                 //.style("opacity", 1)
                 //.transition().duration(500).style("opacity", 0);
@@ -38,31 +39,6 @@ var View = module.exports = view(require('./template.html'), function(view, mode
        var rec2 = d3.selectAll(".leaflet-div-icon1");
        rec2.attr('class', 'leaflet-marker-icon leaflet-div-icon2 leaflet-zoom-hide legend-fadeout');
 
-
-  /*
-    showMapView.cleanPolyline();
-    showMapView.cleanMarkerpoint();
-    showMapView.cleanMarkerCollision();
-    showMapView.marker_collision_group = [];
-
-    var sesion_plan = JSON.parse(localStorage.getItem('dataplan'));
-    sesion_plan = sesion_plan.plan;
-
-     var index_ = model.index;
-     var stroke;
-     var itineraries = sesion_plan.itineraries;
-      for (var i= 0; i < itineraries.length; i++) {
-          if (i != index_){
-            stroke = {'stroke':true, 'class_name':true}
-          }else{
-            stroke = {'stroke':false, 'class_name':false}
-          }
-          for (var j=0; j < itineraries[i].legs.length; j++) {
-             showMapView.drawRouteAmigo(itineraries[i].legs[j], itineraries[i].legs[j].mode, stroke);
-          }
-      }
-      showMapView.drawMakerCollision();
-    */
   });
 
   mouseleave(view.el, function() {
@@ -73,7 +49,7 @@ var View = module.exports = view(require('./template.html'), function(view, mode
         if (i!=model.index){
              var rec = d3.selectAll(".iteration-"+i);
              rec.attr('class', 'iteration-'+i);
-             rec.attr("stroke", "#E0E0E0");
+
             //.style("opacity", 0)
             //.transition().duration(500).style("opacity", 1);
            //.transition().duration(400).style("stroke", "#E0E0E0");
@@ -84,31 +60,6 @@ var View = module.exports = view(require('./template.html'), function(view, mode
    var rec2 = d3.selectAll(".leaflet-div-icon2");
    rec2.attr('class', 'leaflet-marker-icon leaflet-div-icon1 leaflet-zoom-hide');
 
-
-
-  //  showMapView.cleanPolyline();
-  //  showMapView.cleanMarkerpoint();
-  //  showMapView.cleanMarkerCollision();
-  //  showMapView.marker_collision_group = [];
-  //
-  //  if (!view.el.classList.contains('expanded')) {
-  //    showMapView.cleanPolyline();
-  //    showMapView.cleanMarkerpoint();
-  //    showMapView.cleanMarkerCollision();
-  //    showMapView.marker_collision_group = [];
-  //
-  //    var option_draw = {'stroke':false, 'class_name':false};
-  //    var sesion_plan = JSON.parse(localStorage.getItem('dataplan'));
-  //    sesion_plan = sesion_plan.plan;
-  //    var itineraries = sesion_plan.itineraries;
-  //    for (i = 0; i < itineraries.length; i++) {
-  //        for (ii=0; ii < itineraries[i].legs.length; ii++) {
-  //          showMapView.drawRouteAmigo(itineraries[i].legs[ii], itineraries[i].legs[ii].mode, option_draw);
-  //        }
-  //    }
-  //    showMapView.drawMakerCollision();
-  //
-  //  }
 
   });
 });
