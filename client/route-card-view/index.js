@@ -25,7 +25,9 @@ var View = module.exports = view(require('./template.html'), function(view, mode
   for (var i=0; i<itineration.length;i++) {
        if (i!=model.index){
             d3.selectAll(".iteration-"+i)
-           .transition().duration(400).style("stroke", "#E0E0E0");
+            .style("opacity", 1)
+            .transition().duration(400).style("opacity", 0);
+           //.transition().duration(400).style("stroke", "#E0E0E0");
            //.style("opacity", 1)
        }
   }
@@ -49,7 +51,9 @@ var View = module.exports = view(require('./template.html'), function(view, mode
    for (var i=0; i<itineration.length;i++) {
         if (i!=model.index){
             d3.selectAll(".iteration-"+i)
-           .transition().duration(400).style("stroke", "#E0E0E0");
+            .style("opacity", 0)
+            .transition().duration(400).style("opacity", 1);
+           //.transition().duration(400).style("stroke", "#E0E0E0");
            //.style("opacity", 0)
         }
    }
