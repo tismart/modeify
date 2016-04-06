@@ -26,8 +26,8 @@ var View = module.exports = view(require('./template.html'), function(view, mode
       var element = [];
       for (var i=0; i<itineration.length;i++) {
            if (i!=model.index){
-                d3.selectAll(".iteration-"+i).style("stroke", "#E0E0E0");
-                d3.transition().duration(500).style("opacity", 0.25);
+                var r3 = d3.selectAll(".iteration-"+i);
+                r3.style("stroke", "#E0E0E0").transition().duration(500)
            }
       }
 
