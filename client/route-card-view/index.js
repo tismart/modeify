@@ -28,9 +28,12 @@ var View = module.exports = view(require('./template.html'), function(view, mode
            if (i!=model.index){
                 d3.selectAll(".iteration-"+i)
                 .style("opacity", 1)
-                .transition().duration(500).style("opacity", 0);
+                .transition().duration(500).style("opacity", 0.25);
            }
       }
+
+      var rec2 = d3.selectAll(".leaflet-div-icon1");
+      rec2.attr('class', 'leaflet-marker-icon leaflet-div-icon2 leaflet-zoom-hide');
 
 
   /*
@@ -65,14 +68,15 @@ var View = module.exports = view(require('./template.html'), function(view, mode
    console.log("obj itineration 2->", itineration.length);
    for (var i=0; i<itineration.length;i++) {
 
-
         if (i!=model.index){
-
             d3.selectAll(".iteration-"+i)
                 .style("opacity", 0)
                 .transition().duration(500).style("opacity", 1);
         }
    }
+
+    var rec2 = d3.selectAll(".leaflet-div-icon2");
+    rec2.attr('class', 'leaflet-marker-icon leaflet-div-icon1 leaflet-zoom-hide');
   });
 });
 
