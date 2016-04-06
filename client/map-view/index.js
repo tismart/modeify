@@ -255,10 +255,6 @@ module.exports.drawRouteAmigo = function(legs,mode, option, itineration) {
     if (option.stroke){
         set_hover = true;
     }
-    if(mode=="BUS") {
-      console.log("legs ->", legs);
-    }
-
 
     var dasharray= '';
 
@@ -328,11 +324,6 @@ module.exports.drawRouteAmigo = function(legs,mode, option, itineration) {
        }
        */
 
-
-
-
-
-       console.log("color");
       var argpolyline = L.PolylineUtil.decode(route, 5);
       argpolyline.unshift(circle_from);
       route = new L.Polyline(argpolyline, color_options);
