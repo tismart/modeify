@@ -338,7 +338,6 @@ function updateMapOnPlanChange(plan, map) {
       try {
 
         if(!(sesion_plan === null)) {
-                console.log("session ->", sesion_plan);
                 sesion_plan = sesion_plan.plan;
 
                 var itineraries = sesion_plan.itineraries;
@@ -348,11 +347,11 @@ function updateMapOnPlanChange(plan, map) {
                         [sesion_plan.to.lat,sesion_plan.to.lon]
                 );
 
-                var options_draw = {'stroke':false, 'class_name':false};
+
 
                 for (i = 0; i < itineraries.length; i++) {
                     for (ii=0; ii < itineraries[i].legs.length; ii++) {
-                      showMapView.drawRouteAmigo(itineraries[i].legs[ii], itineraries[i].legs[ii].mode, options_draw, i);
+                      showMapView.drawRouteAmigo(itineraries[i].legs[ii], itineraries[i].legs[ii].mode, i);
                     }
                 }
 

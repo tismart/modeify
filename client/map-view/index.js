@@ -213,19 +213,12 @@ module.exports.marker_map = function(from, to){
 
 
 
-module.exports.marker_map_point = function(to, map, set_hover){
+module.exports.marker_map_point = function(to, map, itineration){
 
     var name = to[2];
-    var class_name = '';
-    var html;
-      //html = "<div><span class='leaflet-label'>" + name + "</span></div>";
-    if (!set_hover){
-        class_name = 'leaflet-div-icon1';
-        html = "<span class='leaflet-label'>" + name + "</span>";
-    }else{
-        class_name = 'leaflet-div-icon2';
-        html = "";
-    }
+    var class_name = 'leaflet-div-icon1 circle-fade-'+itineration;
+    var html = "<span class='leaflet-label'>" + name + "</span>";
+
     var marker = L.marker({"lat":to[0], "lng": to[1]}, {
 				icon: L.divIcon({
                     className: class_name,
@@ -243,18 +236,15 @@ module.exports.marker_map_point = function(to, map, set_hover){
 
 
 
-module.exports.drawRouteAmigo = function(legs,mode, option, itineration) {
+module.exports.drawRouteAmigo = function(legs,mode, itineration) {
 
     var route = legs.legGeometry.points;
     var circle_from = [legs.from.lat, legs.from.lon, legs.from.name];
     var circle_to = [legs.to.lat, legs.to.lon, legs.to.name];
     var color = '#000000';
     var weight = 5;
-    var set_hover = false;
-    var classname = "iteration-"+itineration;
-    if (option.stroke){
-        set_hover = true;
-    }
+    var classname = "iteration-"+itineration + " iteration-200";
+
 
     var dasharray= '';
 
@@ -279,8 +269,8 @@ module.exports.drawRouteAmigo = function(legs,mode, option, itineration) {
 
              }
              weight = 8;
-             this.marker_map_point(circle_from, this.activeMap, set_hover);
-             this.marker_map_point(circle_to, this.activeMap, set_hover);
+             this.marker_map_point(circle_from, this.activeMap, itineration);
+             this.marker_map_point(circle_to, this.activeMap, itineration);
 
         }
         else if(mode == "WALK") {
@@ -297,8 +287,8 @@ module.exports.drawRouteAmigo = function(legs,mode, option, itineration) {
                 }
              }
              weight = 5;
-             this.marker_map_point(circle_from, this.activeMap, set_hover);
-             this.marker_map_point(circle_to, this.activeMap, set_hover);
+             this.marker_map_point(circle_from, this.activeMap, itineration);
+             this.marker_map_point(circle_to, this.activeMap, itineration);
         }
 
 
@@ -312,18 +302,7 @@ module.exports.drawRouteAmigo = function(legs,mode, option, itineration) {
             className: classname
         };
 
-        /*
-       if (option.stroke){
-         delete color_options.opacity;
-       }else{
-          color_options.color = color;
-       }
 
-       if (option.class_name){
-           color_options.className = 'message_';
-
-       }
-       */
 
       var argpolyline = L.PolylineUtil.decode(route, 5);
       argpolyline.unshift(circle_from);

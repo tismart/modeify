@@ -21,40 +21,56 @@ var View = module.exports = view(require('./template.html'), function(view, mode
   mouseenter(view.el, function() {
       var itineration = JSON.parse(localStorage.getItem('itineration'));
       for (var i=0; i<itineration.length;i++) {
+           var r3 = d3.selectAll(".iteration-"+i);
            if (i!=model.index){
-                var rec = d3.selectAll(".iteration-"+i);
-                rec.attr('class', 'iteration-'+i+' legend-fadeout')
-                //rec.transition().duration(400).style("stroke", "#E0E0E0")
-                //.style("opacity", 1)
-                //.transition().duration(500).style("opacity", 0);
-               //.transition().duration(400).style("stroke", "#E0E0E0")
-               //.style("opacity", 1)
+                r3.transition().duration(600).style("stroke", "#E0E0E0");
+                r3.attr("data-show","0");
+
+               var rec2 = d3.selectAll(".circle-fade-"+i);
+ -             rec2.attr('class', 'leaflet-marker-icon leaflet-div-icon2 circle-fade-'+i+ ' leaflet-zoom-hide');
+           }else {
+                r3.attr("data-show","1");
            }
       }
 
-       var rec2 = d3.selectAll(".leaflet-div-icon1");
-       rec2.attr('class', 'leaflet-marker-icon leaflet-div-icon2 leaflet-zoom-hide legend-fadeout');
+      d3.selectAll(".iteration-200").each(function(e){
+            var element = d3.select(this);
+            var parent = d3.select(element.node().parentNode);
+            parent.attr("class", "g-element");
+            if (Boolean(parseInt(element.attr("data-show")))) {
+                parent.attr("data-show", "1");
+            }else {
+                parent.attr("data-show", "0");
+            }
 
+      });
+
+      d3.selectAll(".g-element")[0].sort(function(a,b){
+            if (Boolean(parseInt(d3.select(a).attr("data-show")))) {
+                d3.select(a).node().parentNode.appendChild(a);
+            }
+
+      });
   });
 
   mouseleave(view.el, function() {
 
-  var itineration = JSON.parse(localStorage.getItem('itineration'));
-   for (var i=0; i<itineration.length;i++) {
-        if (i!=model.index){
-             var rec = d3.selectAll(".iteration-"+i);
-             rec.attr('class', 'iteration-'+i);
+   showMapView.cleanPolyline();
+    showMapView.cleanMarkerpoint();
+    showMapView.cleanMarkerCollision();
+    showMapView.marker_collision_group = [];
 
-            //.style("opacity", 0)
-            //.transition().duration(500).style("opacity", 1);
-           //.transition().duration(400).style("stroke", "#E0E0E0");
-           //.style("opacity", 0)
-        }
-   }
+    var sesion_plan = JSON.parse(localStorage.getItem('dataplan'));
+    sesion_plan = sesion_plan.plan;
 
-   var rec2 = d3.selectAll(".leaflet-div-icon2");
-   rec2.attr('class', 'leaflet-marker-icon leaflet-div-icon1 leaflet-zoom-hide');
+     var itineraries = sesion_plan.itineraries;
+      for (var i= 0; i < itineraries.length; i++) {
 
+          for (var j=0; j < itineraries[i].legs.length; j++) {
+             showMapView.drawRouteAmigo(itineraries[i].legs[j], itineraries[i].legs[j].mode, i);
+          }
+      }
+      showMapView.drawMakerCollision();
 
   });
 });

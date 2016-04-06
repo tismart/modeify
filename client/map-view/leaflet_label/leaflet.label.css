@@ -6,11 +6,21 @@
     text-shadow: -2px -2px 0 rgba(255, 255, 255, 0.5), 2px -2px 0 rgba(255, 255, 255, 0.5), -2px 2px 0 rgba(255, 255, 255, 0.5), 2px 2px 0 rgba(255, 255, 255, 0.5);
     margin-left: 10px;
     margin-top: -10px;
+    outline: none;
+}
+
+.leaflet-label:focus {
+   position: absolute;
+   margin-left: 10px;
+   margin-top: -10px;
+   border: none !important;
+   outline: none;
 }
 
 .leaflet-label.leaflet-clickable {
     cursor: pointer;
     pointer-events: auto;
+    outline: none;
 }
 
 .leaflet-label:before,
