@@ -125,6 +125,8 @@ module.exports.drawItinerationMakerCollision = function (i) {
 
     for (j in this.last_marker_collision_group[i]){
         marker_collision_group.push(this.last_marker_collision_group[i][j]);
+        var objmarker = this.last_marker_collision_group[i][j];
+        console.log("objmarker.getLatLng ->" , objmarker.getLatLng());
     }
 
     console.log("collision marker orden ->", this.last_marker_collision_group);
