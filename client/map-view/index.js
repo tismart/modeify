@@ -264,9 +264,10 @@ module.exports.marker_map_point = function(to, map, set_hover, itineration){
 				,clickable:   false
 				});
 
-    if (!(this.marker_collision_group[iteration] === undefined)){
-        this.marker_collision_group[iteration] = [];
-        this.marker_collision_group[iteration].push(marker);
+    console.log("itinerarion ->", this.marker_collision_group[itineration]);
+    if (this.marker_collision_group[itineration] === undefined){
+        this.marker_collision_group[itineration] = [];
+        this.marker_collision_group[itineration].push(marker);
     }else {
         this.marker_collision_group[iteration].push(marker);
     }
