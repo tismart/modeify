@@ -113,21 +113,39 @@ module.exports.drawMakerCollision = function () {
 module.exports.drawItinerationMakerCollision = function (i) {
     var collision_group = L.layerGroup.collision();
     var marker_collision_group = [];
+    var selection_marker_collision_group = [];
+
+    for (j in this.last_marker_collision_group[i]){
+        marker_collision_group.push(this.last_marker_collision_group[i][j]);
+        var objmarker = this.last_marker_collision_group[i][j];
+        selection_marker_collision_group.push(objmarker);
+        console.log("objmarker.getLatLng ->" , objmarker.getLatLng());
+    }
 
     for(j in this.last_marker_collision_group) {
         if (j!=i) {
+            var collision = false;
             for (k in this.last_marker_collision_group[j]){
-                marker_collision_group.push(this.last_marker_collision_group[j][k]);
+                var objmarker = this.last_marker_collision_group[j][k];
+                for(i in  selection_marker_collision_group) {
+                    var iobjmarker = selection_marker_collision_group[i];
+                    if (objmarker.lat == iobjmarker.lat || objmarker.lng == iobjmarker.lng){
+                        collision = true;
+                        break
+                    }else {
+                        collision = false;
+                    }
+                }
+                if(!collision) {
+                    marker_collision_group.push(this.last_marker_collision_group[j][k]);
+                }
+
             }
         }
 
     }
 
-    for (j in this.last_marker_collision_group[i]){
-        marker_collision_group.push(this.last_marker_collision_group[i][j]);
-        var objmarker = this.last_marker_collision_group[i][j];
-        console.log("objmarker.getLatLng ->" , objmarker.getLatLng());
-    }
+
 
     console.log("collision marker orden ->", this.last_marker_collision_group);
     collision_group.addLayer(marker_collision_group);
