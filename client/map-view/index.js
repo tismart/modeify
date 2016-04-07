@@ -129,6 +129,7 @@ module.exports.drawItinerationMakerCollision = function (i) {
                 var objmarker = this.last_marker_collision_group[j][k];
                 for(m in  selection_marker_collision_group) {
                     var iobjmarker = selection_marker_collision_group[m];
+                    console.log("iobjmarker ->", iobjmarker);
                     if (objmarker.lat == iobjmarker.lat && objmarker.lng == iobjmarker.lng){
                         collision = true;
                         break;
@@ -136,7 +137,10 @@ module.exports.drawItinerationMakerCollision = function (i) {
                         collision = false;
                     }
                 }
+
+                console.log("paso");
                 if(!collision) {
+                    console.log("verdadero");
                     marker_collision_group.push(this.last_marker_collision_group[j][k]);
                 }
 
