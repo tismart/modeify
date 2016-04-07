@@ -131,7 +131,7 @@ module.exports.drawItinerationMakerCollision = function (i) {
                     var iobjmarker = selection_marker_collision_group[i];
                     if (objmarker.lat == iobjmarker.lat && objmarker.lng == iobjmarker.lng){
                         collision = true;
-                        break
+                        break;
                     }else {
                         collision = false;
                     }
