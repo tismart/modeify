@@ -148,13 +148,15 @@ module.exports.cleanPolyline = function() {
 };
 
 module.exports.cleanMarkerCollision = function() {
-    this.last_marker_collision_group = this.marker_collision_group;
+
     for (i in this.marker_collision_group) {
         for(j in this.marker_collision_group[i]) {
             this.collision_group.removeLayer(this.marker_collision_group[i][j]);
+            this.collision_group.removeLayer(this.last_marker_collision_group[i][j]);
         }
-
     }
+
+    this.last_marker_collision_group = this.marker_collision_group;
 
     this.marker_collision_group = [];
 };
