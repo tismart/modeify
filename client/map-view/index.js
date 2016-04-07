@@ -149,6 +149,7 @@ module.exports.drawItinerationMakerCollision = function (i) {
 
 
     console.log("collision marker orden ->", this.last_marker_collision_group);
+    console.log("pintar marcadores ->", marker_collision_group);
     collision_group.addLayer(marker_collision_group);
     collision_group.onAdd(this.activeMap);
     this.collision_group =  collision_group;
