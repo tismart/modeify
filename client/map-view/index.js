@@ -264,12 +264,12 @@ module.exports.marker_map_point = function(to, map, set_hover, itineration){
 				,clickable:   false
 				});
 
-    console.log("itinerarion ->", this.marker_collision_group[itineration]);
+    console.log("marker_collision_group ->", this.marker_collision_group);
     if (this.marker_collision_group[itineration] === undefined){
         this.marker_collision_group[itineration] = [];
         this.marker_collision_group[itineration].push(marker);
     }else {
-        this.marker_collision_group[iteration].push(marker);
+        this.marker_collision_group[itineration].push(marker);
     }
 
 };
