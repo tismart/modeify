@@ -152,6 +152,11 @@ module.exports.cleanMarkerCollision = function() {
     for (i in this.marker_collision_group) {
         for(j in this.marker_collision_group[i]) {
             this.collision_group.removeLayer(this.marker_collision_group[i][j]);
+        }
+    }
+
+    for (i in this.last_marker_collision_group) {
+        for(j in this.last_marker_collision_group[i]) {
             this.collision_group.removeLayer(this.last_marker_collision_group[i][j]);
         }
     }
