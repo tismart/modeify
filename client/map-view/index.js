@@ -129,13 +129,14 @@ module.exports.drawItinerationMakerCollision = function (i) {
                 var objmarker = this.last_marker_collision_group[j][k];
                 for(i in  selection_marker_collision_group) {
                     var iobjmarker = selection_marker_collision_group[i];
-                    if (objmarker.lat == iobjmarker.lat || objmarker.lng == iobjmarker.lng){
+                    if (objmarker.lat == iobjmarker.lat && objmarker.lng == iobjmarker.lng){
                         collision = true;
                         break
                     }else {
                         collision = false;
                     }
                 }
+
                 if(!collision) {
                     marker_collision_group.push(this.last_marker_collision_group[j][k]);
                 }
