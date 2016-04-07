@@ -128,9 +128,10 @@ module.exports.drawItinerationMakerCollision = function (i) {
             for (k in this.last_marker_collision_group[j]){
                 var collision = false;
                 var objmarker = this.last_marker_collision_group[j][k];
-                console.log("objmarker ->",objmarker);
+                console.log("objmarker  ->",objmarker);
                 for(m in  selection_marker_collision_group) {
                     var iobjmarker = selection_marker_collision_group[m];
+
 
                     console.log("iobjmarker ->",iobjmarker);
                     if (objmarker.lat == iobjmarker.lat && objmarker.lng == iobjmarker.lng){
