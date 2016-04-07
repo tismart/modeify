@@ -127,9 +127,11 @@ module.exports.drawItinerationMakerCollision = function (i) {
         marker_collision_group.push(this.last_marker_collision_group[i][j]);
     }
 
+    console.log("collision marker orden ->", this.last_marker_collision_group);
     collision_group.addLayer(marker_collision_group);
     collision_group.onAdd(this.activeMap);
     this.collision_group =  collision_group;
+    console.log("collision_group ->", collision_group);
 
 };
 
