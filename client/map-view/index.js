@@ -93,10 +93,31 @@ module.exports.marker_creadas = [];
 module.exports.makerpoint_creadas = [];
 module.exports.collision_group = {};
 module.exports.marker_collision_group = [];
+module.exports.last_marker_collision_group = [];
 
 module.exports.drawMakerCollision = function () {
     var collision_group = L.layerGroup.collision();
-    collision_group.addLayer(this.marker_collision_group);
+    var marker_collision_group = [];
+    for(i in this.marker_collision_group) {
+        for (j in this.marker_collision_group[i]){
+            marker_collision_group.push(this.marker_collision_group[i][j]);
+        }
+    }
+    collision_group.addLayer(marker_collision_group);
+    collision_group.onAdd(this.activeMap);
+    this.collision_group =  collision_group;
+
+};
+
+module.exports.drawItinerationMakerCollision = function (i) {
+    var collision_group = L.layerGroup.collision();
+    var marker_collision_group = [];
+
+        for (j in this.last_marker_collision_group[i]){
+            marker_collision_group.push(this.last_marker_collision_group[i][j]);
+        }
+
+    collision_group.addLayer(marker_collision_group);
     collision_group.onAdd(this.activeMap);
     this.collision_group =  collision_group;
 
@@ -127,11 +148,17 @@ module.exports.cleanPolyline = function() {
 };
 
 module.exports.cleanMarkerCollision = function() {
+    this.last_marker_collision_group = this.marker_collision_group;
     for (i in this.marker_collision_group) {
-        this.collision_group.removeLayer(this.marker_collision_group[i]);
+        for(j in this.marker_collision_group[i]) {
+            this.collision_group.removeLayer(this.marker_collision_group[i][j]);
+        }
+
     }
 
-}
+    this.marker_collision_group = [];
+};
+
 module.exports.cleanMarker = function() {
     var map = this.activeMap;
     for (i in this.marker_creadas) {
@@ -213,7 +240,7 @@ module.exports.marker_map = function(from, to){
 
 
 
-module.exports.marker_map_point = function(to, map, set_hover){
+module.exports.marker_map_point = function(to, map, set_hover, itineration){
 
     var name = to[2];
     var class_name = '';
@@ -237,8 +264,13 @@ module.exports.marker_map_point = function(to, map, set_hover){
 				,clickable:   false
 				});
 
+    if (!(this.marker_collision_group[iteration] === undefined)){
+        this.marker_collision_group[iteration] = [];
+        this.marker_collision_group[iteration].push(marker);
+    }else {
+        this.marker_collision_group[iteration].push(marker);
+    }
 
-    this.marker_collision_group.push(marker);
 };
 
 
@@ -299,8 +331,8 @@ module.exports.drawRouteAmigo = function(legs,mode, itineration) {
                 }
              }
              weight = 5;
-             this.marker_map_point(circle_from, this.activeMap, set_hover);
-             this.marker_map_point(circle_to, this.activeMap, set_hover);
+             this.marker_map_point(circle_from, this.activeMap, set_hover, itineration);
+             this.marker_map_point(circle_to, this.activeMap, set_hover, itineration);
         }
 
 
