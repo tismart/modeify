@@ -127,10 +127,10 @@ module.exports.drawItinerationMakerCollision = function (i) {
 
             for (k in this.last_marker_collision_group[j]){
                 var collision = false;
-                var objmarker = this.last_marker_collision_group[j][k];
+                var objmarker = this.last_marker_collision_group[j][k].getLatLng();
                 console.log("objmarker  ->",objmarker);
                 for(m in  selection_marker_collision_group) {
-                    var iobjmarker = selection_marker_collision_group[m];
+                    var iobjmarker = selection_marker_collision_group[m].getLatLng();
 
 
                     console.log("iobjmarker ->",iobjmarker);
