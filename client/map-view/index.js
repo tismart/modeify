@@ -314,8 +314,8 @@ module.exports.drawRouteAmigo = function(legs,mode, itineration) {
 
              }
              weight = 8;
-             this.marker_map_point(circle_from, this.activeMap, set_hover);
-             this.marker_map_point(circle_to, this.activeMap, set_hover);
+             this.marker_map_point(circle_from, this.activeMap, set_hover, itineration);
+             this.marker_map_point(circle_to, this.activeMap, set_hover, itineration);
 
         }
         else if(mode == "WALK") {
