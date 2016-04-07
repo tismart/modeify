@@ -112,10 +112,24 @@ module.exports.drawMakerCollision = function () {
 module.exports.drawItinerationMakerCollision = function (i) {
     var collision_group = L.layerGroup.collision();
     var marker_collision_group = [];
+    /*
+    for (j in this.last_marker_collision_group[i]){
+        marker_collision_group.push(this.last_marker_collision_group[i][j]);
+    }
+    */
 
-        for (j in this.last_marker_collision_group[i]){
-            marker_collision_group.push(this.last_marker_collision_group[i][j]);
+    for(j in this.last_marker_collision_group) {
+        if (j!=i) {
+            for (k in this.last_marker_collision_group[j]){
+                marker_collision_group.push(this.last_marker_collision_group[j][k]);
+            }
         }
+
+    }
+
+    for (j in this.last_marker_collision_group[i]){
+        marker_collision_group.push(this.last_marker_collision_group[i][j]);
+    }
 
     collision_group.addLayer(marker_collision_group);
     collision_group.onAdd(this.activeMap);
