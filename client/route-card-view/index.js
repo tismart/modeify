@@ -59,6 +59,7 @@ var View = module.exports = view(require('./template.html'), function(view, mode
   });
 
   mouseleave(view.el, function() {
+     if (!view.el.classList.contains('expanded')) {
        var itineration = JSON.parse(localStorage.getItem('itineration'));
        for (var i=0; i<itineration.length;i++) {
            if (i!=model.index){
@@ -87,7 +88,7 @@ var View = module.exports = view(require('./template.html'), function(view, mode
             child.attr("data-show", "0");
             setTimeout(function(){ element.node().parentNode.appendChild(layer_ordenados[i]); }, 500);
         }
-
+     }
   });
 });
 
